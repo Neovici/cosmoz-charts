@@ -1,0 +1,28 @@
+{
+  "name": "cosmoz-charts",
+  "description": "Create beautiful charts using billboard.js",
+  "main": "cosmoz-charts.js",
+  "dependencies": {
+    "@polymer/polymer": "^3.0.0"
+  },
+  "devDependencies": {
+    "@polymer/iron-component-page": "^4.0.1",
+    "@polymer/iron-demo-helpers": "^3.0.0-pre.19",
+    "@polymer/test-fixture": "^4.0.2",
+    "@webcomponents/webcomponentsjs": "^2.0.0",
+    "chai": "^4.2.0",
+    "eslint": "^5.16.0",
+    "eslint-plugin-html": "^5.0.3",
+    "eslint-plugin-mocha": "^5.3.0",
+    "mocha": "^5.2.0",
+    "polymer-cli": "^1.9.7",
+    "wct-istanbul": "^0.14.3",
+    "wct-mocha": "^1.0.0"
+  },
+  "scripts": {
+    "start": "polymer serve -o",
+    "lint": "eslint --cache --ext .js,.html . && polymer lint cosmoz-*.html",
+    "test": "polymer test",
+    "analyze": "polymer analyze --input cosmoz-*.js  > analysis.json"
+  }
+}
