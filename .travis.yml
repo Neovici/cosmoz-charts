@@ -1,0 +1,22 @@
+---
+language: node_js
+node_js: "lts/*"
+
+addons:
+  firefox: latest
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+
+cache:
+  yarn: true
+  directories:
+    - node_modules
+    - .eslintcache
+
+before_script:
+  - yarn lint
+script:
+  - yarn test
