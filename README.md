@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/Neovici/cosmoz-charts.svg?branch=master)](https://travis-ci.com/Neovici/cosmoz-charts)
+
 # \<cosmoz-charts\>
 
 Create beautiful charts using billboard.js
