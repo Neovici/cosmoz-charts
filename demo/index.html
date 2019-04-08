@@ -1,33 +1,40 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>cosmoz-charts demo</title>
+		<title>cosmoz-charts demo</title>
 
-    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+		<script src="/components/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
-    <script type="module">
-      import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
-      import '@polymer/iron-demo-helpers/demo-snippet';
-    </script>
+		<script type="module">
+			import '@polymer/iron-demo-helpers/demo-pages-shared-styles';
+			import '@polymer/iron-demo-helpers/demo-snippet';
+		</script>
 
-    <script type="module" src="../cosmoz-charts.js"></script>
 
-    <custom-style>
-      <style is="custom-style" include="demo-pages-shared-styles">
-      </style>
-    </custom-style>
-  </head>
-  <body>
-    <div class="vertical-section-container centered">
-      <h3>Basic cosmoz-charts demo</h3>
-      <demo-snippet>
-        <template>
-          <cosmoz-charts></cosmoz-charts>
-        </template>
-      </demo-snippet>
-    </div>
-  </body>
+		<link rel="stylesheet" href="/components/billboard.js/dist/billboard.css">
+		<script src="/components/d3/dist/d3.min.js"></script>
+		<script src="/components/billboard.js/dist/billboard.min.js"></script>
+		<script type="module" src="../cosmoz-chart.js"></script>
+
+		<custom-style>
+			<style is="custom-style" include="demo-pages-shared-styles">
+			</style>
+		</custom-style>
+	</head>
+	<body>
+		<div class="vertical-section-container centered">
+			<h3>Basic cosmoz-charts demo</h3>
+			<demo-snippet>
+				<template>
+					<cosmoz-chart
+						data='{"x": "x", "columns": [["x","2019-03-13","2019-03-25"],["y",1,5]]}'
+						axis='{"x": {"type": "timeseries"}}'
+					></cosmoz-chart>
+				</template>
+			</demo-snippet>
+		</div>
+	</body>
 </html>

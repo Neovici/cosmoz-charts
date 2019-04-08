@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+		<title>cosmoz-charts test</title>
+
+		<script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+		<script src="../node_modules/@polymer/test-fixture/test-fixture.js"></script>
+		<script src="../node_modules/mocha/mocha.js"></script>
+		<script src="../node_modules/chai/chai.js"></script>
+		<script src="../node_modules/wct-mocha/wct-mocha.js"></script>
+		<script src="../node_modules/sinon/pkg/sinon.js"></script>
+		<script src="../node_modules/sinon-chai/lib/sinon-chai.js"></script>
+
+		<link rel="stylesheet" href="/components/billboard.js/dist/billboard.css">
+		<script src="/components/d3/dist/d3.min.js"></script>
+		<script src="/components/billboard.js/dist/billboard.min.js"></script>
+
+		<script type="module" src="../cosmoz-chart.js"></script>
+	</head>
+	<body>
+
+		<test-fixture id="BasicTestFixture">
+			<template is="dom-template">
+				<cosmoz-chart data="[[data]]" axis="[[axis]]" line="[[line]]"></cosmoz-chart>
+			</template>
+		</test-fixture>
+
+		<script type="module">
+		import {tap} from '@polymer/iron-test-helpers/mock-interactions.js';
+		import {upgradeDomTemplates} from './helpers/utils.js';
+		upgradeDomTemplates();
+
+		describe('cosmoz-chart', () => {
+			it('draws a simple line chart', () => {
+				const element = fixture('BasicTestFixture', {
+					data: {
+						columns: [
+							['data1', 1, 2, 3]
+						]
+					}
+				});
+
+				expect(element.querySelector('.bb-line-data1')).to.exist;
+				expect(element.querySelectorAll('circle')).to.have.lengthOf(3);
+			});
+
+			it('configures axis', () => {
+				const element = fixture('BasicTestFixture', {
+					data: {
+						columns: [['data1', 10, 20, 30]],
+					},
+					axis: {
+						x: { show: false},
+						y: {
+							tick: {
+								format: function (x) {
+									return x + '%';
+								},
+								count: 5
+							}
+						},
+					},
+					line: {point: false}
+				});
+
+				expect(window.getComputedStyle(element.querySelector('.bb-axis-x')).visibility).to.equal('hidden');
+				expect(Array.from(element.querySelectorAll('.bb-axis-y .tick')).map(i => i.textContent)).to.deep.equal(['8%', '14%', '20%', '26%', '32%']);
+			});
+
+			it('updates the chart when the data changes', () => {
+				const element = fixture('BasicTestFixture', {
+					data: {
+						columns: [
+							['data1', 1, 2, 3]
+						]
+					}
+				});
+
+				element.set('data', {
+					columns: [
+						['data1', 2, 3, 4, 5, 6],
+						['data2', 20, 30, 40, 50, 60]
+					]
+				});
+
+				expect(element.querySelector('.bb-line-data1')).to.exist;
+				expect(element.querySelector('.bb-line-data2')).to.exist;
+				expect(element.querySelectorAll('circle')).to.have.lengthOf(10);
+			});
+
+			it('updates the chart when the config changes', () => {
+				const element = fixture('BasicTestFixture', {
+					data: {
+						columns: [['data1', 10, 20, 30]],
+					}
+				});
+
+				expect(window.getComputedStyle(element.querySelector('.bb-axis-x')).visibility).to.equal('visible');
+
+				element.set('axis', {
+					x: { show: false },
+					y: {
+						tick: {
+							format: function (x) {
+								return x + '%';
+							},
+							count: 5
+						}
+					},
+				});
+
+				expect(window.getComputedStyle(element.querySelector('.bb-axis-x')).visibility).to.equal('hidden');
+				expect(Array.from(element.querySelectorAll('.bb-axis-y .tick')).map(i => i.textContent)).to.deep.equal(['8%', '14%', '20%', '26%', '32%']);
+			});
+
+			it('triggers events', () => {
+				const onRendered = sinon.spy(),
+					onClick = sinon.spy(),
+					element = fixture('BasicTestFixture', {
+						data: {columns: [['data1', 10, 20, 30]]}
+					});
+
+				element.addEventListener('rendered', onRendered);
+				element.render();
+				expect(onRendered).to.have.been.calledOnce;
+
+				element.addEventListener('dataclick', onClick);
+				tap(element.querySelector('.bb-event-rect-1'));
+				expect(onClick).to.have.been.calledOnce;
+				expect(onClick).to.have.been.calledWithMatch(sinon.match({detail: {d: {x: 1, value: 20}}}));
+			});
+		});
+
+		</script>
+	</body>
+</html>
