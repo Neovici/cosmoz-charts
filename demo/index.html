@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-		<title>cosmoz-charts demo</title>
+		<title>cosmoz-chart demo</title>
 
 		<script src="/components/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
@@ -26,15 +26,55 @@
 	</head>
 	<body>
 		<div class="vertical-section-container centered">
-			<h3>Basic cosmoz-charts demo</h3>
+			<h3>Basic timeseries chart</h3>
 			<demo-snippet>
 				<template>
 					<cosmoz-chart
-						data='{"x": "x", "columns": [["x","2019-03-13","2019-03-25"],["y",1,5]]}'
-						axis='{"x": {"type": "timeseries"}}'
+						data='{
+							"x": "time",
+							"columns": [["time","2019-03-13","2019-03-25"],["errors",1,5]]
+						}'
+						axis='{
+							"x": {"type": "timeseries"}
+						}'
 					></cosmoz-chart>
 				</template>
 			</demo-snippet>
+
+			<h3>Basic donut chart and click handling</h3>
+			<demo-snippet>
+				<template>
+					<dom-bind id="donutChart">
+						<template>
+							<cosmoz-chart
+								data='{
+									"columns": [
+										["supplier_missing",120],
+										["duplicate",37],
+										["reasonable_error",1]
+									],
+									"type": "donut",
+									"names": {
+										"supplier_missing": "Supplier missing"
+									}
+								}'
+								on-dataclick="onClick"
+							></cosmoz-chart>
+							<textarea id="output" style="width: 100%; height: 250px;"></textarea>
+						</template>
+					</dom-bind>
+				</template>
+			</demo-snippet>
 		</div>
+
+		<script type="text/javascript">
+			window.addEventListener('WebComponentsReady', () => {
+				let donutChart = document.getElementById('donutChart');
+
+				donutChart.onClick = function (ev) {
+					this.$.output.value += JSON.stringify(ev.detail.d) + '\n';
+				};
+			});
+		</script>
 	</body>
 </html>
