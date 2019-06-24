@@ -1,5 +1,6 @@
 import {templatize} from '@polymer/polymer/lib/utils/templatize';
 
+// @see https://github.com/PolymerElements/test-fixture/issues/47#issuecomment-453212161
 // Helper code to make <template is="dom-template"> stampable by test-fixture
 export const upgradeDomTemplates = () => {
 	document.querySelectorAll('[is="dom-template"]').forEach(t => {

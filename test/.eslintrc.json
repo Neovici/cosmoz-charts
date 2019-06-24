@@ -1,20 +1,3 @@
 {
-	"env": {
-		"mocha": true
-	},
-	"plugins": ["mocha"],
-	"globals": {
-		"a11ySuite": false,
-		"assert": false,
-		"chai": true,
-		"expect": false,
-		"fixture": false,
-		"flush": false,
-		"MockInteractions": false,
-		"sinon": true,
-		"WCT": false
-	},
-	"rules": {
-		"no-unused-expressions": "off"
-	}
+	"extends": "@neovici/eslint-config/test-config"
 }
