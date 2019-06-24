@@ -10,24 +10,57 @@ const bb = window.bb;
  * Billboard.js configuration properties
  * @type {Array}
  */
-const bbProps = ['area', 'axis', 'bar', 'bubble', 'clipPath', 'color',
-	'donut', 'gauge', 'grid', 'interaction', 'legend', 'line', 'padding', 'pie',
-	'point', 'radar', 'regions', 'resize', 'size', 'spline', 'subchart', 'svg',
-	'title', 'tooltip', 'transition', 'zoom'];
+const bbProps = ['area',
+	'axis',
+	'bar',
+	'bubble',
+	'clipPath',
+	'color',
+	'donut',
+	'gauge',
+	'grid',
+	'interaction',
+	'legend',
+	'line',
+	'padding',
+	'pie',
+	'point',
+	'radar',
+	'regions',
+	'resize',
+	'size',
+	'spline',
+	'subchart',
+	'svg',
+	'title',
+	'tooltip',
+	'transition',
+	'zoom'];
 
 /**
  * Chart events
  * @type {Array}
  */
-const bbEvents = ['onafterinit', 'onbeforeinit', 'oninit', 'onout', 'onover',
-	'onrendered', 'onresize', 'onresized'];
+const bbEvents = ['onafterinit',
+	'onbeforeinit',
+	'oninit',
+	'onout',
+	'onover',
+	'onrendered',
+	'onresize',
+	'onresized'];
 
 /**
  * Chart datapoint events
  * @type {Array}
  */
-const bbDataEvents = ['onclick', 'onmax', 'onmin', 'onout', 'onover',
-	'onselected', 'onunselected'];
+const bbDataEvents = ['onclick',
+	'onmax',
+	'onmin',
+	'onout',
+	'onover',
+	'onselected',
+	'onunselected'];
 
 /**
  * `cosmoz-chart`

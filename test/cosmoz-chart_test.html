@@ -50,18 +50,18 @@
 			it('configures axis', () => {
 				const element = fixture('BasicTestFixture', {
 					data: {
-						columns: [['data1', 10, 20, 30]],
+						columns: [['data1', 10, 20, 30]]
 					},
 					axis: {
 						x: { show: false},
 						y: {
 							tick: {
-								format: function (x) {
+								format(x) {
 									return x + '%';
 								},
 								count: 5
 							}
-						},
+						}
 					},
 					line: {point: false}
 				});
@@ -94,7 +94,7 @@
 			it('updates the chart when the config changes', () => {
 				const element = fixture('BasicTestFixture', {
 					data: {
-						columns: [['data1', 10, 20, 30]],
+						columns: [['data1', 10, 20, 30]]
 					}
 				});
 
@@ -104,12 +104,12 @@
 					x: { show: false },
 					y: {
 						tick: {
-							format: function (x) {
+							format(x) {
 								return x + '%';
 							},
 							count: 5
 						}
-					},
+					}
 				});
 
 				expect(window.getComputedStyle(element.querySelector('.bb-axis-x')).visibility).to.equal('hidden');
