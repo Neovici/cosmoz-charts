@@ -16,7 +16,7 @@
   },
   "license": "Apache-2.0",
   "author": "Cristian Necula <virusz@gmail.com>",
-  "main": "cosmoz-charts.js",
+  "main": "cosmoz-chart.js",
   "directories": {
     "test": "test"
   },
