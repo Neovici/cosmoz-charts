@@ -22,7 +22,7 @@
 
 		<test-fixture id="BasicTestFixture">
 			<template is="dom-template">
-				<cosmoz-chart data="[[data]]" axis="[[axis]]" line="[[line]]"></cosmoz-chart>
+				<cosmoz-chart data="[[data]]" axis="[[axis]]" line="[[line]]" config="[[config]]"></cosmoz-chart>
 			</template>
 		</test-fixture>
 
@@ -66,6 +66,40 @@
 
 				expect(window.getComputedStyle(element.querySelector('.bb-axis-x')).visibility).to.equal('hidden');
 				expect(Array.from(element.querySelectorAll('.bb-axis-y .tick')).map(i => i.textContent)).to.deep.equal(['8%', '14%', '20%', '26%', '32%']);
+			});
+
+			it('can receive whole configuration object', () => {
+				const element = fixture('BasicTestFixture', {
+					data: {
+						columns: [['data1', 10, 20, 30]]
+					},
+					config: {
+						axis: {
+							x: { show: false }
+						}
+					}
+				});
+
+				expect(window.getComputedStyle(element.querySelector('.bb-axis-x')).visibility).to.equal('hidden');
+			});
+
+			it('individual prop configurations take precedence over [config]', () => {
+				const element = fixture('BasicTestFixture', {
+					data: {
+						columns: [['data1', 10, 20, 30]]
+					},
+					config: {
+						axis: {
+							x: { show: true }
+						}
+					},
+					axis: {
+						x: { show: false }
+					},
+					line: {}
+				});
+
+				expect(window.getComputedStyle(element.querySelector('.bb-axis-x')).visibility).to.equal('hidden');
 			});
 
 			it('updates the chart when the data changes', () => {

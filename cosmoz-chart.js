@@ -99,7 +99,7 @@ class CosmozChart extends PolymerElement {
 	 * @type {Object}
 	 */
 	static get properties() {
-		return bbProps.concat('data').reduce((acc, i) => {
+		return bbProps.concat('data', 'config').reduce((acc, i) => {
 			acc[i] = {type: Object};
 			return acc;
 		}, {});
@@ -113,7 +113,7 @@ class CosmozChart extends PolymerElement {
 		const configParams = bbProps.join(',');
 		return [
 			'_onDataUpdate(data)',
-			'_onConfigUpdate(' + configParams + ')'
+			'_onConfigUpdate(config,' + configParams + ')'
 		];
 	}
 
@@ -161,6 +161,7 @@ class CosmozChart extends PolymerElement {
 		const config = Object.assign(
 			{ bindto: this.$.chart },
 			{ data: Object.assign({}, this.data, dataEvents) },
+			this.config || {},
 			props,
 			chartEvents
 		);
