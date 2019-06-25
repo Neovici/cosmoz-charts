@@ -4,7 +4,7 @@ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
  * billboard.js
  * @type {BillboardJS}
  */
-const bb = window.bb;
+import { bb } from 'billboard.js/src/core';
 
 /**
  * Billboard.js configuration properties

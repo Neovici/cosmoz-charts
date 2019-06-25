@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
-    "billboard.js": "^1.8.0"
+    "billboard.js": "plumelo/billboard.js#4d29440c602273637c43ab776e07f3b6b0d2c0f8"
   },
   "devDependencies": {
     "@neovici/eslint-config": "github:neovici/eslint-config#semver:^1.0.0",
