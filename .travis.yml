@@ -12,8 +12,18 @@ cache:
   directories:
     - node_modules
     - .eslintcache
+    - $HOME/cc
+
+env:
+  global:
+    - CC_TEST_REPORTER_ID=1dd0014a980eb8906bfaac982dbdf83a535ce9e2ed538c0b0e4f3b96bce59f8e
+    - NEO_CC_URL=https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64
+    - NEO_CC=$HOME/cc/cc-test-reporter
 
 before_script:
   - yarn lint
+  - ([[ -e $NEO_CC ]] || curl -L $NEO_CC_URL > $NEO_CC) && chmod +x $NEO_CC
+  - $NEO_CC before-build
 script:
   - yarn test
+  - $NEO_CC after-build --exit-code $TRAVIS_TEST_RESULT
