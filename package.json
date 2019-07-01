@@ -30,7 +30,9 @@
   },
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
-    "billboard.js": "^1.9.3"
+    "billboard.js": "^1.9.3",
+    "d3": "^5.9.7",
+    "d3-scale-chromatic": "^1.3.3"
   },
   "devDependencies": {
     "@neovici/eslint-config": "github:neovici/eslint-config#semver:^1.0.0",
