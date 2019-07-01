@@ -1,6 +1,6 @@
 {
   "name": "@neovici/cosmoz-charts",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "Create beautiful charts using billboard.js",
   "keywords": [
     "charts",
