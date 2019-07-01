@@ -6,6 +6,9 @@ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
  */
 import { bb } from 'billboard.js/src/core';
 
+export { format, utcFormat } from 'd3';
+export { schemePaired as defaultColorScheme } from 'd3-scale-chromatic';
+
 /**
  * Billboard.js configuration properties
  * @type {Array}
