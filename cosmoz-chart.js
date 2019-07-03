@@ -1,4 +1,6 @@
 import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
+
 
 /**
  * billboard.js
@@ -127,7 +129,7 @@ class CosmozChart extends PolymerElement {
 	connectedCallback() {
 		super.connectedCallback();
 
-		this.render();
+		afterNextRender(this, this.render);
 	}
 
 	/**
