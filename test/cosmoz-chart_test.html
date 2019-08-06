@@ -33,16 +33,12 @@
 		</test-fixture>
 
 		<script type="module">
-		import { tap } from '@polymer/iron-test-helpers/mock-interactions.js';
-		import { afterNextRender } from '@polymer/polymer/lib/utils/render-status.js';
-		import { upgradeDomTemplates } from './helpers/utils.js';
-
-		const nextRender = () => new Promise(resolve => afterNextRender(null, resolve));
-
+		import {tap} from '@polymer/iron-test-helpers/mock-interactions.js';
+		import {upgradeDomTemplates} from './helpers/utils.js';
 		upgradeDomTemplates();
 
 		describe('cosmoz-chart', () => {
-			it('draws a simple line chart', async () => {
+			it('draws a simple line chart', () => {
 				const element = fixture('BasicTestFixture', {
 					data: {
 						columns: [
@@ -58,14 +54,12 @@
 					}
 				});
 
-				await nextRender();
-
 				expect(element.querySelectorAll('.bb-legend-item text')).to.not.overlap();
 				expect(element.querySelector('.bb-line-data1')).to.exist;
 				expect(element.querySelectorAll('circle')).to.have.lengthOf(24);
 			});
 
-			it('configures axis', async () => {
+			it('configures axis', () => {
 				const element = fixture('BasicTestFixture', {
 					data: {
 						columns: [['data1', 10, 20, 30]]
@@ -84,13 +78,11 @@
 					line: {point: false}
 				});
 
-				await nextRender();
-
 				expect(window.getComputedStyle(element.querySelector('.bb-axis-x')).visibility).to.equal('hidden');
 				expect(Array.from(element.querySelectorAll('.bb-axis-y .tick')).map(i => i.textContent)).to.deep.equal(['8%', '14%', '20%', '26%', '32%']);
 			});
 
-			it('can receive whole configuration object', async () => {
+			it('can receive whole configuration object', () => {
 				const element = fixture('BasicTestFixture', {
 					data: {
 						columns: [['data1', 10, 20, 30]]
@@ -102,12 +94,10 @@
 					}
 				});
 
-				await nextRender();
-
 				expect(window.getComputedStyle(element.querySelector('.bb-axis-x')).visibility).to.equal('hidden');
 			});
 
-			it('individual prop configurations take precedence over [config]', async () => {
+			it('individual prop configurations take precedence over [config]', () => {
 				const element = fixture('BasicTestFixture', {
 					data: {
 						columns: [['data1', 10, 20, 30]]
@@ -123,12 +113,10 @@
 					line: {}
 				});
 
-				await nextRender();
-
 				expect(window.getComputedStyle(element.querySelector('.bb-axis-x')).visibility).to.equal('hidden');
 			});
 
-			it('updates the chart when the data changes', async () => {
+			it('updates the chart when the data changes', () => {
 				const element = fixture('BasicTestFixture', {
 					data: {
 						columns: [
@@ -136,8 +124,6 @@
 						]
 					}
 				});
-
-				await nextRender();
 
 				element.set('data', {
 					columns: [
@@ -151,14 +137,12 @@
 				expect(element.querySelectorAll('circle')).to.have.lengthOf(10);
 			});
 
-			it('updates the chart when the config changes', async () => {
+			it('updates the chart when the config changes', () => {
 				const element = fixture('BasicTestFixture', {
 					data: {
 						columns: [['data1', 10, 20, 30]]
 					}
 				});
-
-				await nextRender();
 
 				expect(window.getComputedStyle(element.querySelector('.bb-axis-x')).visibility).to.equal('visible');
 
@@ -213,7 +197,6 @@
 					}
 				});
 
-				await nextRender();
 				element.style.display = 'block';
 				element.chart.resize();
 
