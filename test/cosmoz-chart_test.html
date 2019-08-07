@@ -178,6 +178,26 @@
 				expect(onClick).to.have.been.calledOnce;
 				expect(onClick).to.have.been.calledWithMatch(sinon.match({detail: {d: {x: 1, value: 20}}}));
 			});
+
+			describe('resize', () => {
+				it('triggers a chart resize', () => {
+					const element = fixture('BasicTestFixture', {
+						data: {
+							columns: [['data1', 10, 20, 30]]
+						},
+						config: {
+							axis: {
+								x: { show: false }
+							}
+						}
+					});
+					element.style.width = '100px';
+
+					expect(window.getComputedStyle(element.querySelector('svg')).width).to.equal('900px');
+					element.resize();
+					expect(window.getComputedStyle(element.querySelector('svg')).width).to.equal('100px');
+				});
+			});
 		});
 
 		describe('known bugs', () => {
@@ -198,7 +218,7 @@
 				});
 
 				element.style.display = 'block';
-				element.chart.resize();
+				element.resize();
 
 				expect(() => {
 					expect(element.querySelectorAll('.bb-legend-item text')).to.not.overlap();
