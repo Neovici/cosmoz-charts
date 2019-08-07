@@ -180,6 +180,14 @@ class CosmozChart extends PolymerElement {
 	}
 
 	/**
+	 * Resize the chart
+	 * @return {void}
+	 */
+	resize() {
+		this.chart.resize();
+	}
+
+	/**
 	 * Render the template in the light DOM.
 	 * @param  {DocumentFragment} dom the template
 	 * @return {void}
