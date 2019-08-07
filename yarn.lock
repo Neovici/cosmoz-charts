@@ -2175,7 +2175,7 @@ better-assert@~1.0.0:
   dependencies:
     callsite "1.0.0"
 
-billboard.js@^1.9.3:
+billboard.js@1.9.5:
   version "1.9.5"
   resolved "https://registry.yarnpkg.com/billboard.js/-/billboard.js-1.9.5.tgz#3f465e43f4ff58e6367dcb8bf3ec04ebdf1a907d"
   integrity sha512-eWqOedhCNVOtcY/EERkGKw4wm3sOfY+A/7GKoLtYrfiF9UGv0JbM0OqS1X3k4lP+4H4SynZhZv5F+NGuMWHX5A==
