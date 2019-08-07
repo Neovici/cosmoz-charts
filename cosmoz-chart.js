@@ -96,12 +96,19 @@ class CosmozChart extends PolymerElement {
 	static get template() {
 		return html`
 			<style>
-				svg {
-					max-width: 100%;
-				}
+				:host { display: block }
+				svg { max-width: 100% }
 			</style>
-			<div id="chart"></div>
+			<slot id="slot"></slot>
 		`;
+	}
+
+	/**
+	 * Configures the light DOM template.
+	 * @type {String}
+	 */
+	static get lightTemplate() {
+		return html`<div id="chart"></div>`;
 	}
 
 	/**
@@ -168,8 +175,11 @@ class CosmozChart extends PolymerElement {
 			return acc;
 		}, {});
 
+		const bindto = this.$.slot.assignedNodes()
+			.find(node => node.id === 'chart');
+
 		const config = Object.assign(
-			{ bindto: this.$.chart },
+			{ bindto },
 			{ data: Object.assign({}, this.data, dataEvents) },
 			this.config || {},
 			props,
@@ -188,12 +198,13 @@ class CosmozChart extends PolymerElement {
 	}
 
 	/**
-	 * Render the template in the light DOM.
+	 * Render both in the shadow and the light DOM.
 	 * @param  {DocumentFragment} dom the template
 	 * @return {void}
 	 */
 	_attachDom(dom) {
-		this.appendChild(dom);
+		this.appendChild(CosmozChart.lightTemplate.content);
+		return super._attachDom(dom);
 	}
 
 	/**
