@@ -94,7 +94,14 @@ class CosmozChart extends PolymerElement {
 	 * @type {String}
 	 */
 	static get template() {
-		return html`<div id="chart"></div>`;
+		return html`
+			<style>
+				svg {
+					max-width: 100%;
+				}
+			</style>
+			<div id="chart"></div>
+		`;
 	}
 
 	/**
