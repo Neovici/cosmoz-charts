@@ -194,8 +194,8 @@ class CosmozChart extends PolymerElement {
 	 */
 	resize(hard) {
 		this.chart.resize();
-		
-		if(hard) {
+
+		if (hard) {
 			this.chart.internal.clearLegendItemTextBoxCache();
 			this.chart.internal.resetCache();
 			// a second resize is required to fully update the dimensions
