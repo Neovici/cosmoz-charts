@@ -188,11 +188,19 @@ class CosmozChart extends PolymerElement {
 	}
 
 	/**
-	 * Resize the chart
+	 * Resizes the chart.
+	 * @param  {Boolean} hard force dimensions re-calculation
 	 * @return {void}
 	 */
-	resize() {
+	resize(hard) {
 		this.chart.resize();
+		
+		if(hard) {
+			this.chart.internal.clearLegendItemTextBoxCache();
+			this.chart.internal.resetCache();
+			// a second resize is required to fully update the dimensions
+			this.chart.resize();
+		}
 	}
 
 	/**
