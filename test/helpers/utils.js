@@ -28,7 +28,10 @@ const elementsOverlap = (element, index, elements) =>
 		.concat(elements.slice(index + 1))
 		.some(otherElement => intersects(element, otherElement) || intersects(otherElement, element));
 
-/** @this chai.Assertion */
+/**
+ * @this chai.Assertion
+ * @returns {void}
+ */
 const overlap = function () {
 	const obj = chai.util.flag(this, 'object');
 	this.assert(

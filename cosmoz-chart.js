@@ -95,10 +95,7 @@ class CosmozChart extends PolymerElement {
 	 */
 	static get template() {
 		return html`
-			<style>
-				:host { display: block }
-				svg { max-width: 100% }
-			</style>
+			<style>:host { display: block }</style>
 			<slot id="slot"></slot>
 		`;
 	}
@@ -187,14 +184,23 @@ class CosmozChart extends PolymerElement {
 		);
 
 		this.chart = bb.generate(config);
+		this.chart.$.svg.style('max-width', '100%');
 	}
 
 	/**
-	 * Resize the chart
+	 * Resizes the chart.
+	 * @param  {Boolean} hard force dimensions re-calculation
 	 * @return {void}
 	 */
-	resize() {
+	resize(hard) {
 		this.chart.resize();
+
+		if (hard) {
+			this.chart.internal.clearLegendItemTextBoxCache();
+			this.chart.internal.resetCache();
+			// a second resize is required to fully update the dimensions
+			this.chart.resize();
+		}
 	}
 
 	/**

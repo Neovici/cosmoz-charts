@@ -193,15 +193,13 @@
 					});
 					element.style.width = '100px';
 
-					expect(window.getComputedStyle(element.querySelector('svg')).width).to.equal('900px');
+					expect(element.querySelector('svg').getAttribute('width')).to.equal('900');
 					element.resize();
-					expect(window.getComputedStyle(element.querySelector('svg')).width).to.equal('100px');
+					expect(element.querySelector('svg').getAttribute('width')).to.equal('100');
 				});
 			});
-		});
 
-		describe('known bugs', () => {
-			it('rendering while hidden causes legend items to overlap [#15]', async () => {
+			it('forces re-rendering after element becomes visible [#15]', () => {
 				const element = fixture('HiddenTestFixture', {
 					data: {
 						columns: [
@@ -218,11 +216,10 @@
 				});
 
 				element.style.display = 'block';
-				element.resize();
+				element.resize(true);
 
-				expect(() => {
-					expect(element.querySelectorAll('.bb-legend-item text')).to.not.overlap();
-				}).to.throw();
+				expect(element.querySelectorAll('.bb-legend-item text')).to.not.overlap();
+				expect(element.querySelector('g:nth-of-type(1)').getBoundingClientRect().height).to.be.above(280);
 			});
 		});
 		</script>
