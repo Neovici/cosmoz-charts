@@ -95,10 +95,7 @@ class CosmozChart extends PolymerElement {
 	 */
 	static get template() {
 		return html`
-			<style>
-				:host { display: block }
-				svg { max-width: 100% }
-			</style>
+			<style>:host { display: block }</style>
 			<slot id="slot"></slot>
 		`;
 	}
@@ -187,6 +184,7 @@ class CosmozChart extends PolymerElement {
 		);
 
 		this.chart = bb.generate(config);
+		this.chart.$.svg.style('max-width', '100%');
 	}
 
 	/**

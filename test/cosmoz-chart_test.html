@@ -193,9 +193,9 @@
 					});
 					element.style.width = '100px';
 
-					expect(window.getComputedStyle(element.querySelector('svg')).width).to.equal('900px');
+					expect(element.querySelector('svg').getAttribute('width')).to.equal('900');
 					element.resize();
-					expect(window.getComputedStyle(element.querySelector('svg')).width).to.equal('100px');
+					expect(element.querySelector('svg').getAttribute('width')).to.equal('100');
 				});
 			});
 		});
