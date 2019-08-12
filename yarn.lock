@@ -2205,12 +2205,12 @@ better-assert@~1.0.0:
   dependencies:
     callsite "1.0.0"
 
-billboard.js@1.9.5:
-  version "1.9.5"
-  resolved "https://registry.yarnpkg.com/billboard.js/-/billboard.js-1.9.5.tgz#3f465e43f4ff58e6367dcb8bf3ec04ebdf1a907d"
-  integrity sha512-eWqOedhCNVOtcY/EERkGKw4wm3sOfY+A/7GKoLtYrfiF9UGv0JbM0OqS1X3k4lP+4H4SynZhZv5F+NGuMWHX5A==
+billboard.js@^1.10.1:
+  version "1.10.1"
+  resolved "https://registry.yarnpkg.com/billboard.js/-/billboard.js-1.10.1.tgz#9bdfa2bd94a916845d45837803c9a3a507996dc9"
+  integrity sha512-1KiHMAZPWWRhJfJtMIs6Ks+VqVemnaBPsmkpUZu7g5iBVqCd/tLirXxNwBnbv/8ITTjpgpGTZhtrTAwZexQPCg==
   dependencies:
-    d3 "^5.9.2"
+    d3 "^5.9.7"
 
 binary-extensions@^1.0.0:
   version "1.13.1"
@@ -3078,9 +3078,9 @@ d3-axis@1:
   integrity sha512-ejINPfPSNdGFKEOAtnBtdkpr24c4d4jsei6Lg98mxf424ivoDP2956/5HDpIAtmHo85lqT4pruy+zEgvRUBqaQ==
 
 d3-brush@1:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/d3-brush/-/d3-brush-1.1.1.tgz#4b31ff06b1c9dfca1b66d340d2afb0cdbc391d61"
-  integrity sha512-nVIsduqChMBemov7NvTj3imYvDcihqf73RzoLULW0FrDmIlaWuP8Q9P+rPQB5SpqQjbrr4m0DoaHQewVcPhZsQ==
+  version "1.1.2"
+  resolved "https://registry.yarnpkg.com/d3-brush/-/d3-brush-1.1.2.tgz#1d45941457d6903a1924f5c56c60363fed0e7bc9"
+  integrity sha512-0cQBYrlKqLevZZaRE5Hh3W5FGp3c9gvUyJZm3B0Z3iAM3aSkEXt7F+4+vYyJoaL6vEipVM511rMqO3lD6ShyRA==
   dependencies:
     d3-dispatch "1"
     d3-drag "1"
@@ -3119,9 +3119,9 @@ d3-dispatch@1:
   integrity sha512-vwKx+lAqB1UuCeklr6Jh1bvC4SZgbSqbkGBLClItFBIYH4vqDJCA7qfoy14lXmJdnBOdxndAMxjCbImJYW7e6g==
 
 d3-drag@1:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/d3-drag/-/d3-drag-1.2.3.tgz#46e206ad863ec465d88c588098a1df444cd33c64"
-  integrity sha512-8S3HWCAg+ilzjJsNtWW1Mutl74Nmzhb9yU6igspilaJzeZVFktmY6oO9xOh5TDk+BM2KrNFjttZNoJJmDnkjkg==
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/d3-drag/-/d3-drag-1.2.4.tgz#ba9331d68158ad14cf0b4b28a8afa9e78c7d99ad"
+  integrity sha512-ICPurDETFAelF1CTHdIyiUM4PsyZLaM+7oIBhmyP+cuVjze5vDZ8V//LdOFjg0jGnFIZD/Sfmk0r95PSiu78rw==
   dependencies:
     d3-dispatch "1"
     d3-selection "1"
@@ -3201,7 +3201,15 @@ d3-random@1:
   resolved "https://registry.yarnpkg.com/d3-random/-/d3-random-1.1.2.tgz#2833be7c124360bf9e2d3fd4f33847cfe6cab291"
   integrity sha512-6AK5BNpIFqP+cx/sreKzNjWbwZQCSUatxq+pPRmFIQaWuoD+NrbVWw7YWpHiXpCQ/NanKdtGDuB+VQcZDaEmYQ==
 
-d3-scale-chromatic@1, d3-scale-chromatic@^1.3.3:
+d3-scale-chromatic@1:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/d3-scale-chromatic/-/d3-scale-chromatic-1.4.0.tgz#f5b945edb5be8285b8bb76ad171f39ef479afcde"
+  integrity sha512-0vyEt8ZqhdgzC+IvdkJZL7fc3k7UZyJvMxR3zvU312z/HilJ0N+WSY3099jAxdfhe99ak9VhcK1ChDVVGc8Q0Q==
+  dependencies:
+    d3-color "1"
+    d3-interpolate "1"
+
+d3-scale-chromatic@^1.3.3:
   version "1.3.3"
   resolved "https://registry.yarnpkg.com/d3-scale-chromatic/-/d3-scale-chromatic-1.3.3.tgz#dad4366f0edcb288f490128979c3c793583ed3c0"
   integrity sha512-BWTipif1CimXcYfT02LKjAyItX5gKiwxuPRgr4xM58JwlLocWbjPLI7aMEjkcoOQXMkYsmNsvv3d2yl/OKuHHw==
@@ -3268,9 +3276,9 @@ d3-voronoi@1:
   integrity sha512-dArJ32hchFsrQ8uMiTBLq256MpnZjeuBtdHpaDlYuQyjU0CVzCJl/BVW+SkszaAeH95D/8gxqAhgx0ouAWAfRg==
 
 d3-zoom@1:
-  version "1.7.3"
-  resolved "https://registry.yarnpkg.com/d3-zoom/-/d3-zoom-1.7.3.tgz#f444effdc9055c38077c4299b4df999eb1d47ccb"
-  integrity sha512-xEBSwFx5Z9T3/VrwDkMt+mr0HCzv7XjpGURJ8lWmIC8wxe32L39eWHIasEe/e7Ox8MPU4p1hvH8PKN2olLzIBg==
+  version "1.8.3"
+  resolved "https://registry.yarnpkg.com/d3-zoom/-/d3-zoom-1.8.3.tgz#b6a3dbe738c7763121cd05b8a7795ffe17f4fc0a"
+  integrity sha512-VoLXTK4wvy1a0JpH2Il+F2CiOhVu7VRXWF5M/LroMIh3/zBAC3WAt7QoIvPibOavVo20hN6/37vwAsdBejLyKQ==
   dependencies:
     d3-dispatch "1"
     d3-drag "1"
@@ -3278,7 +3286,7 @@ d3-zoom@1:
     d3-selection "1"
     d3-transition "1"
 
-d3@^5.9.2, d3@^5.9.7:
+d3@^5.9.7:
   version "5.9.7"
   resolved "https://registry.yarnpkg.com/d3/-/d3-5.9.7.tgz#f3835648a172b438e89ed57eb6c525bdabdcd7dc"
   integrity sha512-jENytrmdXtGPw7HuSK2S4gxRM1eUGjKvWQkQ6ct4yK+DB8SG3VcnVrwesfnsv8rIcxMUg18TafT4Q8mOZUMP4Q==

@@ -78,8 +78,8 @@
 					line: {point: false}
 				});
 
-				expect(window.getComputedStyle(element.querySelector('.bb-axis-x')).visibility).to.equal('hidden');
-				expect(Array.from(element.querySelectorAll('.bb-axis-y .tick')).map(i => i.textContent)).to.deep.equal(['8%', '14%', '20%', '26%', '32%']);
+				expect(window.getComputedStyle(element.querySelector('.bb-axis-y')).visibility).to.equal('visible');
+				expect(element.querySelectorAll('.bb-axis-y .tick')).to.have.lengthOf(5);
 			});
 
 			it('can receive whole configuration object', () => {
@@ -159,7 +159,8 @@
 				});
 
 				expect(window.getComputedStyle(element.querySelector('.bb-axis-x')).visibility).to.equal('hidden');
-				expect(Array.from(element.querySelectorAll('.bb-axis-y .tick')).map(i => i.textContent)).to.deep.equal(['8%', '14%', '20%', '26%', '32%']);
+				expect(window.getComputedStyle(element.querySelector('.bb-axis-y')).visibility).to.equal('visible');
+				expect(element.querySelectorAll('.bb-axis-y .tick')).to.have.lengthOf(5);
 			});
 
 			it('triggers events', () => {
