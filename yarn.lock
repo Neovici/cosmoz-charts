@@ -2207,10 +2207,10 @@ better-assert@~1.0.0:
   dependencies:
     callsite "1.0.0"
 
-billboard.js@^1.10.1:
-  version "1.10.1"
-  resolved "https://registry.yarnpkg.com/billboard.js/-/billboard.js-1.10.1.tgz#9bdfa2bd94a916845d45837803c9a3a507996dc9"
-  integrity sha512-1KiHMAZPWWRhJfJtMIs6Ks+VqVemnaBPsmkpUZu7g5iBVqCd/tLirXxNwBnbv/8ITTjpgpGTZhtrTAwZexQPCg==
+billboard.js@^1.10.2:
+  version "1.10.2"
+  resolved "https://registry.yarnpkg.com/billboard.js/-/billboard.js-1.10.2.tgz#2cddd5d7e56b9a547c1b6c891580f9909a6aba58"
+  integrity sha512-9AbLl3xnsaA50hyQuelYVK0cw7VW3IMkLcCwJ4nYmy9IN7UD617AIAfFY4AbH+/zKMsDceeUOPFfstqy2UeyGA==
   dependencies:
     d3 "^5.9.7"
 
