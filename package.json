@@ -42,7 +42,7 @@
     "@polymer/iron-test-helpers": "^3.0.1",
     "@polymer/test-fixture": "^4.0.2",
     "@webcomponents/webcomponentsjs": "^2.0.0",
-    "babel-eslint": "^10.0.2",
+    "babel-eslint": "^10.0.3",
     "chai": "^4.2.0",
     "eslint": "^5.16.0",
     "eslint-plugin-html": "^5.0.3",
