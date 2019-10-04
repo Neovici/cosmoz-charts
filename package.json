@@ -40,6 +40,16 @@
   "publishConfig": {
     "access": "public"
   },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
     "billboard.js": "^1.10.1",
@@ -47,6 +57,8 @@
     "d3-scale-chromatic": "^1.3.3"
   },
   "devDependencies": {
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
     "@neovici/eslint-config": "github:neovici/eslint-config#semver:^1.0.0",
     "@neovici/github-actions-eslint-annotator": "^0.2.0",
     "@polymer/iron-component-page": "^4.0.1",
@@ -62,6 +74,7 @@
     "eslint-plugin-html": "^5.0.3",
     "eslint-plugin-import": "^2.17.3",
     "eslint-plugin-mocha": "^5.3.0",
+    "husky": "^3.0.8",
     "mocha": "^5.2.0",
     "polymer-cli": "^1.9.7",
     "semantic-release": "^16.0.0-beta.24",
