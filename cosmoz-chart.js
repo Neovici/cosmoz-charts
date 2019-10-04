@@ -13,57 +13,63 @@ export { schemePaired as defaultColorScheme } from 'd3-scale-chromatic';
  * Billboard.js configuration properties
  * @type {Array}
  */
-const bbProps = ['area',
-	'axis',
-	'bar',
-	'bubble',
-	'clipPath',
-	'color',
-	'donut',
-	'gauge',
-	'grid',
-	'interaction',
-	'legend',
-	'line',
-	'padding',
-	'pie',
-	'point',
-	'radar',
-	'regions',
-	'resize',
-	'size',
-	'spline',
-	'subchart',
-	'svg',
-	'title',
-	'tooltip',
-	'transition',
-	'zoom'];
+const bbProps = [
+		'area',
+		'axis',
+		'bar',
+		'bubble',
+		'clipPath',
+		'color',
+		'donut',
+		'gauge',
+		'grid',
+		'interaction',
+		'legend',
+		'line',
+		'padding',
+		'pie',
+		'point',
+		'radar',
+		'regions',
+		'resize',
+		'size',
+		'spline',
+		'subchart',
+		'svg',
+		'title',
+		'tooltip',
+		'transition',
+		'zoom'
+	],
 
-/**
+	/**
  * Chart events
  * @type {Array}
  */
-const bbEvents = ['onafterinit',
-	'onbeforeinit',
-	'oninit',
-	'onout',
-	'onover',
-	'onrendered',
-	'onresize',
-	'onresized'];
+	bbEvents = [
+		'onafterinit',
+		'onbeforeinit',
+		'oninit',
+		'onout',
+		'onover',
+		'onrendered',
+		'onresize',
+		'onresized'
+	],
 
-/**
+	/**
  * Chart datapoint events
  * @type {Array}
  */
-const bbDataEvents = ['onclick',
-	'onmax',
-	'onmin',
-	'onout',
-	'onover',
-	'onselected',
-	'onunselected'];
+	bbDataEvents = [
+		'onclick',
+		'onmax',
+		'onmin',
+		'onout',
+		'onover',
+		'onselected',
+		'onunselected'
+	];
 
 /**
  * `cosmoz-chart`
@@ -148,40 +154,40 @@ class CosmozChart extends PolymerElement {
 	render() {
 		// configure events for data points interactions
 		const dataEvents = bbDataEvents.reduce((acc, i) => {
-			const event = i.replace('on', '').replace('click', 'dataclick');
+				const event = i.replace('on', '').replace('click', 'dataclick');
 
-			acc[i] = (d, el) =>
-				this.dispatchEvent(new CustomEvent(event, {
-					detail: {d, el}
-				}));
+				acc[i] = (d, el) =>
+					this.dispatchEvent(new CustomEvent(event, {
+						detail: {d, el}
+					}));
 
-			return acc;
-		}, {});
+				return acc;
+			}, {}),
 
-		// configure events for chart interactions
-		const chartEvents = bbEvents.reduce((acc, i) => {
-			acc[i] = () => this.dispatchEvent(new CustomEvent(i.replace('on', '')));
-			return acc;
-		}, {});
+			// configure events for chart interactions
+			chartEvents = bbEvents.reduce((acc, i) => {
+				acc[i] = () => this.dispatchEvent(new CustomEvent(i.replace('on', '')));
+				return acc;
+			}, {}),
 
-		// configure chart
-		const props = bbProps.reduce((acc, i) => {
-			if (this[i] != null) {
-				acc[i] = this[i];
-			}
-			return acc;
-		}, {});
+			// configure chart
+			props = bbProps.reduce((acc, i) => {
+				if (this[i] != null) {
+					acc[i] = this[i];
+				}
+				return acc;
+			}, {}),
 
-		const bindto = this.$.slot.assignedNodes()
-			.find(node => node.id === 'chart');
+			bindto = this.$.slot.assignedNodes()
+				.find(node => node.id === 'chart'),
 
-		const config = Object.assign(
-			{ bindto },
-			{ data: Object.assign({}, this.data, dataEvents) },
-			this.config || {},
-			props,
-			chartEvents
-		);
+			config = Object.assign(
+				{ bindto },
+				{ data: Object.assign({}, this.data, dataEvents) },
+				this.config || {},
+				props,
+				chartEvents
+			);
 
 		this.chart = bb.generate(config);
 		this.chart.$.svg.style('max-width', '100%');

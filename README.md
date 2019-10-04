@@ -1,4 +1,6 @@
-[![Build Status](https://travis-ci.com/Neovici/cosmoz-charts.svg?branch=master)](https://travis-ci.com/Neovici/cosmoz-charts)
+[![Build Status](https://github.com/Neovici/cosmoz-charts/workflows/Github%20CI/badge.svg)](https://github.com/Neovici/cosmoz-charts/actions?workflow=Github+CI)
+[![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg)](https://github.com/semantic-release/semantic-release)
+
 
 # \<cosmoz-charts\>
 
