@@ -81,6 +81,6 @@
     "sinon": "^7.3.1",
     "sinon-chai": "^3.3.0",
     "wct-istanbul": "^0.14.3",
-    "wct-mocha": "^1.0.0"
+    "wct-mocha": "^1.0.1"
   }
 }
