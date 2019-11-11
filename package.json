@@ -51,7 +51,7 @@
     }
   },
   "dependencies": {
-    "@polymer/polymer": "^3.3.0",
+    "@polymer/polymer": "^3.3.1",
     "billboard.js": "^1.10.1",
     "d3": "^5.9.7",
     "d3-scale-chromatic": "^1.5.0"
@@ -66,7 +66,7 @@
     "@polymer/iron-test-helpers": "^3.0.1",
     "@polymer/test-fixture": "^4.0.2",
     "@semantic-release/changelog": "^3.0.5",
-    "@semantic-release/git": "^7.0.17",
+    "@semantic-release/git": "^7.0.18",
     "@webcomponents/webcomponentsjs": "^2.3.0",
     "babel-eslint": "^10.0.2",
     "chai": "^4.2.0",
