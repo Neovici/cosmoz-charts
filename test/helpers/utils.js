@@ -1,4 +1,4 @@
-import {templatize} from '@polymer/polymer/lib/utils/templatize';
+import { templatize } from '@polymer/polymer/lib/utils/templatize';
 
 // @see https://github.com/PolymerElements/test-fixture/issues/47#issuecomment-453212161
 // Helper code to make <template is="dom-template"> stampable by test-fixture
@@ -37,7 +37,7 @@ const intersects = (el1, el2) => {
 		this.assert(
 			Array.from(obj).some(elementsOverlap),
 			'expected elements to overlap',
-			'expected elements not to overlap',
+			'expected elements not to overlap'
 		);
 	};
 

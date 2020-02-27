@@ -1,4 +1,6 @@
-import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
+import {
+	html, PolymerElement
+} from '@polymer/polymer/polymer-element.js';
 
 /**
  * billboard.js
@@ -6,7 +8,9 @@ import { html, PolymerElement } from '@polymer/polymer/polymer-element.js';
  */
 import { bb } from 'billboard.js/src/core';
 
-export { format, utcFormat } from 'd3';
+export {
+	format, utcFormat
+} from 'd3';
 export { schemePaired as defaultColorScheme } from 'd3-scale-chromatic';
 
 /**
@@ -120,7 +124,7 @@ class CosmozChart extends PolymerElement {
 	 */
 	static get properties() {
 		return bbProps.concat('data', 'config').reduce((acc, i) => {
-			acc[i] = {type: Object};
+			acc[i] = { type: Object };
 			return acc;
 		}, {});
 	}
@@ -158,7 +162,10 @@ class CosmozChart extends PolymerElement {
 
 				acc[i] = (d, el) =>
 					this.dispatchEvent(new CustomEvent(event, {
-						detail: {d, el}
+						detail: {
+							d,
+							el
+						}
 					}));
 
 				return acc;

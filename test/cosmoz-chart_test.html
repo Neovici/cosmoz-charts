@@ -33,8 +33,8 @@
 		</test-fixture>
 
 		<script type="module">
-		import {tap} from '@polymer/iron-test-helpers/mock-interactions.js';
-		import {upgradeDomTemplates} from './helpers/utils.js';
+		import { tap } from '@polymer/iron-test-helpers/mock-interactions.js';
+		import { upgradeDomTemplates } from './helpers/utils.js';
 		upgradeDomTemplates();
 
 		describe('cosmoz-chart', () => {
@@ -65,7 +65,7 @@
 						columns: [['data1', 10, 20, 30]]
 					},
 					axis: {
-						x: { show: false},
+						x: { show: false },
 						y: {
 							tick: {
 								format(x) {
@@ -75,7 +75,7 @@
 							}
 						}
 					},
-					line: {point: false}
+					line: { point: false }
 				});
 
 				expect(window.getComputedStyle(element.querySelector('.bb-axis-y')).visibility).to.equal('visible');
@@ -167,7 +167,7 @@
 				const onRendered = sinon.spy(),
 					onClick = sinon.spy(),
 					element = fixture('BasicTestFixture', {
-						data: {columns: [['data1', 10, 20, 30]]}
+						data: { columns: [['data1', 10, 20, 30]]}
 					});
 
 				element.addEventListener('rendered', onRendered);
@@ -177,7 +177,14 @@
 				element.addEventListener('dataclick', onClick);
 				tap(element.querySelector('.bb-event-rect-1'));
 				expect(onClick).to.have.been.calledOnce;
-				expect(onClick).to.have.been.calledWithMatch(sinon.match({detail: {d: {x: 1, value: 20}}}));
+				expect(onClick).to.have.been.calledWithMatch(sinon.match({
+					detail: {
+						d: {
+							x: 1,
+							value: 20
+						}
+					}
+				}));
 			});
 
 			describe('resize', () => {
