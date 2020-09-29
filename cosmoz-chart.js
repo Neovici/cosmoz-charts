@@ -79,10 +79,8 @@ const
 			chartRef.chart?.load(data);
 		}, [data]);
 
-		useLayoutEffect(() => {
-			() => {
-				chartRef.chart?.destroy();
-			};
+		useLayoutEffect(() => () => {
+			chartRef.chart?.destroy();
 		}, []);
 	},
 	renderChart = () => html`
@@ -91,6 +89,9 @@ const
 	`,
 
 	/**
+	 * @param {HTMLElement} host The host custom element
+	 * @return {TemplateResult}
+	 *
 	 * `cosmoz-chart`
 	 * Create beautiful charts using billboard.js.
 	 *
