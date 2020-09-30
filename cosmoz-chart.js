@@ -1,16 +1,15 @@
 import {
-	component, html, useLayoutEffect, useMemo
+	component, html, useEffect, useMemo
 } from 'haunted';
 /* eslint-disable no-unused-expressions */
 /**
  * billboard.js
  * @type {BillboardJS}
  */
-import { bb } from 'billboard.js/src/core';
+import bb, { line } from 'billboard.js';
 
-export {
-	format, utcFormat
-} from 'd3';
+export { utcFormat } from 'd3-time-format';
+export { format } from 'd3-format';
 export { schemePaired as defaultColorScheme } from 'd3-scale-chromatic';
 
 const
@@ -54,11 +53,29 @@ const
 		...getBBEvents(host),
 		...cfg,
 		data: {
+			type: line(),
 			...host.data,
 			...getBBDataEvents(host)
 		},
 		bindto
 	}),
+	useChartResize = (host, chartRef) => useEffect(() => {
+		const observer = new ResizeObserver(entries => requestAnimationFrame(() => {
+			const width = entries[0]?.contentRect.width;
+			if (width === 0 || width === chartRef.prevWidth) {
+				return;
+			}
+			chartRef.width = width;
+			chartRef.chart.internal.cache.cache = {};
+			chartRef.chart.resize();
+		}));
+
+		observer.observe(host);
+
+		return () => {
+			observer.unobserve(host);
+		};
+	}, []),
 
 	useChart = host => {
 		const {
@@ -66,22 +83,23 @@ const
 				data
 			} = host,
 			chartRef = useMemo(() => ({
-				el: host.appendChild(document.createElement('div'))
+				el: host.appendChild(document.createElement('div')),
+				width: 0
 			}), []);
 
-		useLayoutEffect(() => {
-			const chart = bb.generate(configure(config, host, chartRef.el));
-			chart.$.svg.style('max-width', '100%');
-			chartRef.chart = chart;
+		useEffect(() => {
+			chartRef.chart = bb.generate(configure(config, host, chartRef.el));
 		}, [config]);
 
-		useLayoutEffect(() => {
+		useEffect(() => {
 			chartRef.chart?.load(data);
 		}, [data]);
 
-		useLayoutEffect(() => () => {
+		useChartResize(host, chartRef);
+
+		useEffect(() => () => requestAnimationFrame(() => {
 			chartRef.chart?.destroy();
-		}, []);
+		}), []);
 	},
 	renderChart = () => html`
 		<style>:host { display: block }</style>
@@ -107,21 +125,5 @@ const
 	 * @demo demo/index.html
 	 */
 	chart = host => renderChart(useChart(host));
-
-// /**
-//  * Resizes the chart.
-//  * @param  {Boolean} hard force dimensions re-calculation
-//  * @return {void}
-//  */
-// resize(hard) {
-// 	this.chart.resize();
-
-// 	if (hard) {
-// 		this.chart.internal.clearLegendItemTextBoxCache();
-// 		this.chart.internal.resetCache();
-// 		// a second resize is required to fully update the dimensions
-// 		this.chart.resize();
-// 	}
-// }
 
 customElements.define('cosmoz-chart', component(chart));

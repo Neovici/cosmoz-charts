@@ -144,7 +144,8 @@ suite('cosmoz-chart', () => {
 
 		await nextFrame();
 		await nextFrame();
-		const el = chart.querySelector('.bb-event-rect-1');
+		await nextFrame();
+		const el = chart.querySelector('.bb-event-rect');
 
 		assert.ok(el);
 		const eBox = el.getBoundingClientRect();
@@ -167,5 +168,74 @@ suite('cosmoz-chart', () => {
 			}
 		}));
 	});
+
+	test('triggers a chart resize', async () => {
+		const chart = await fixture(html`
+			<cosmoz-chart .data=${ {
+				columns: [['data1', 10, 20, 30]]
+			} }
+			.config=${ { axis: { x: { show: false }}} }
+			></cosmoz-chart>`);
+		assert.isAbove(parseFloat(chart.querySelector('svg').getAttribute('width')), 100);
+		chart.style.width = '100px';
+		await nextFrame();
+		await nextFrame();
+		await nextFrame();
+		assert.closeTo(parseFloat(chart.querySelector('svg').getAttribute('width')), 100, 1);
+	});
+
+	test('re-renders after element becomes visible [#15]', async () => {
+		const chart = await fixture(html`
+			<cosmoz-chart style="display: none" .data=${ {
+				columns: [
+					['data1', 1, 2, 3],
+					['data2', 1, 2, 3],
+					['data3', 1, 2, 3],
+					['data4', 1, 2, 3],
+					['data5', 1, 2, 3],
+					['data6', 1, 2, 3],
+					['data7', 1, 2, 3],
+					['data8', 1, 2, 3]
+				]
+			} }
+			></cosmoz-chart>`);
+
+		chart.style.display = '';
+		await nextFrame();
+		await nextFrame();
+		assert.isFalse(overlap(chart.querySelectorAll('.bb-legend-item text')), 'expected element to not overlap');
+		assert.isAbove(chart.querySelector('g:nth-of-type(1)').getBoundingClientRect().height, 280);
+	});
+
+	test('re-renders after element has size', async () => {
+		const chart = await fixture(html`
+			<cosmoz-chart style="display: none" .data=${ {
+				columns: [
+					['data1', 1, 2, 3],
+					['data2', 1, 2, 3],
+					['data3', 1, 2, 3],
+					['data4', 1, 2, 3],
+					['data5', 1, 2, 3],
+					['data6', 1, 2, 3],
+					['data7', 1, 2, 3],
+					['data8', 1, 2, 3]
+				]
+			} }
+			></cosmoz-chart>`);
+
+		chart.style.display = '';
+		chart.style.width = '0';
+		await nextFrame();
+		await nextFrame();
+
+		chart.style.width = '';
+		await nextFrame();
+		await nextFrame();
+
+		assert.isFalse(overlap(chart.querySelectorAll('.bb-legend-item text')), 'expected element to not overlap');
+		assert.isAbove(chart.querySelector('g:nth-of-type(1)').getBoundingClientRect().height, 280);
+	});
+
+
 });
 

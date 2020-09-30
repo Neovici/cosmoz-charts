@@ -60,10 +60,10 @@
     }
   },
   "dependencies": {
-    "@storybook/storybook-deployer": "^2.8.6",
-    "billboard.js": "^1.11.1",
-    "d3": "^5.15.0",
-    "d3-scale-chromatic": "^1.5.0",
+    "billboard.js": "^2.1.1",
+    "d3-format": "^2.0.0",
+    "d3-scale-chromatic": "^2.0.0",
+    "d3-time-format": "^3.0.0",
     "haunted": "^4.7.0"
   },
   "devDependencies": {
@@ -75,6 +75,7 @@
     "@open-wc/testing-karma": "^3.3.12",
     "@semantic-release/changelog": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
+    "@storybook/storybook-deployer": "^2.8.6",
     "deepmerge": "^4.2.2",
     "eslint": "^6.8.0",
     "husky": "^4.2.3",

@@ -1,5 +1,6 @@
+/* eslint-disable no-alert, camelcase */
 import { html } from 'haunted';
-
+import { donut as bbDonut } from 'billboard.js';
 import '../cosmoz-chart';
 
 export default {
@@ -13,7 +14,7 @@ const timeseries = () => html`
 		.config=${ { axis: { x: { type: 'timeseries' }}} }
 		.data=${ {
 			x: 'time',
-			columns: [['time', '2019-03-13', '2019-03-25'], ['errors', 1, 5]]
+			columns: [['time', '2019-03-13', '2019-03-25', '2019-04-02'], ['errors', 1, 5, 6]]
 		} }
 	></cosmoz-chart>
 `,
@@ -26,7 +27,7 @@ const timeseries = () => html`
 				['duplicate', 37],
 				['reasonable_error', 1]
 			],
-			type: 'donut',
+			type: bbDonut(),
 			names: {
 				supplier_missing: 'Supplier missing'
 			}
