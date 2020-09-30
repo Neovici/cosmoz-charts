@@ -20,10 +20,20 @@
   "directories": {
     "test": "test"
   },
+  "files": [
+    "cosmoz-*.js"
+  ],
   "scripts": {
     "lint": "eslint --cache --ext .js,.html .",
-    "start": "polymer serve -o",
-    "test": "polymer test"
+    "start": "npm run storybook",
+    "test": "karma start --coverage",
+    "test:watch": "karma start --auto-watch=true --single-run=false",
+    "test:update-snapshots": "karma start --update-snapshots",
+    "test:prune-snapshots": "karma start --prune-snapshots",
+    "test:compatibility": "karma start --compatibility all --auto-watch=true --single-run=false",
+    "storybook": "start-storybook --node-resolve --watch --open",
+    "storybook:build": "build-storybook",
+    "storybook:deploy": "storybook-to-ghpages"
   },
   "release": {
     "plugins": [
@@ -50,36 +60,30 @@
     }
   },
   "dependencies": {
-    "@polymer/polymer": "^3.3.1",
-    "billboard.js": "^1.11.1",
-    "d3": "^5.15.0",
-    "d3-scale-chromatic": "^1.5.0"
+    "billboard.js": "^2.1.1",
+    "d3-format": "^2.0.0",
+    "d3-scale-chromatic": "^2.0.0",
+    "d3-time-format": "^3.0.0",
+    "haunted": "^4.7.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.3.5",
-    "@commitlint/config-conventional": "^8.3.4",
-    "@neovici/eslint-config": "^1.2.0",
-    "@neovici/github-actions-eslint-annotator": "^0.4.0",
-    "@polymer/iron-component-page": "^4.0.1",
-    "@polymer/iron-demo-helpers": "^3.1.0",
-    "@polymer/iron-test-helpers": "^3.0.1",
-    "@polymer/test-fixture": "^4.0.2",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
+    "@neovici/eslint-config": "^1.2.1",
+    "@open-wc/demoing-storybook": "^2.4.2",
+    "@open-wc/testing": "^2.5.27",
+    "@open-wc/testing-karma": "^3.3.12",
     "@semantic-release/changelog": "^5.0.0",
     "@semantic-release/git": "^9.0.0",
-    "@webcomponents/webcomponentsjs": "^2.4.2",
-    "babel-eslint": "^10.1.0",
-    "chai": "^4.2.0",
+    "@storybook/storybook-deployer": "^2.8.6",
+    "deepmerge": "^4.2.2",
     "eslint": "^6.8.0",
-    "eslint-plugin-html": "^6.0.0",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-mocha": "^6.3.0",
     "husky": "^4.2.3",
-    "mocha": "^7.1.0",
-    "polymer-cli": "^1.9.11",
-    "semantic-release": "^17.0.4",
+    "karma": "^5.2.3",
+    "karma-firefox-launcher": "^1.3.0",
+    "karma-sauce-launcher": "^4.0.0",
+    "semantic-release": "^17.0.0",
     "sinon": "^9.0.0",
-    "sinon-chai": "^3.5.0",
-    "wct-istanbul": "^0.14.3",
-    "wct-mocha": "^1.0.1"
+    "typescript": "^4.0.0"
   }
 }
