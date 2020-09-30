@@ -2,6 +2,7 @@ import {
 	assert, html, fixture, fixtureSync, nextFrame, oneEvent
 } from '@open-wc/testing';
 import { spy } from 'sinon';
+import { line } from 'billboard.js';
 import '../cosmoz-chart.js';
 
 const intersects = (el1, el2) => {
@@ -25,6 +26,7 @@ suite('cosmoz-chart', () => {
 	test('draws a simple line chart', async () => {
 		const chart = await fixture(html`
 			<cosmoz-chart .data=${ {
+				type: line(),
 				columns: [
 					['data1', 1, 2, 3],
 					['data2', 1, 2, 3],

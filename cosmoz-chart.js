@@ -1,12 +1,7 @@
 import {
 	component, html, useEffect, useMemo
 } from 'haunted';
-/* eslint-disable no-unused-expressions */
-/**
- * billboard.js
- * @type {BillboardJS}
- */
-import bb, { line } from 'billboard.js';
+import bb from 'billboard.js';
 
 export { utcFormat } from 'd3-time-format';
 export { format } from 'd3-format';
@@ -53,7 +48,6 @@ const
 		...getBBEvents(host),
 		...cfg,
 		data: {
-			type: line(),
 			...host.data,
 			...getBBDataEvents(host)
 		},
@@ -62,7 +56,7 @@ const
 	useChartResize = (host, chartRef) => useEffect(() => {
 		const observer = new ResizeObserver(entries => requestAnimationFrame(() => {
 			const width = entries[0]?.contentRect.width;
-			if (width === 0 || width === chartRef.prevWidth) {
+			if (width === 0 || width === chartRef.width) {
 				return;
 			}
 			chartRef.width = width;

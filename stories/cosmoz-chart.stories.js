@@ -1,6 +1,8 @@
 /* eslint-disable no-alert, camelcase */
 import { html } from 'haunted';
-import { donut as bbDonut } from 'billboard.js';
+import {
+	donut as bbDonut, line
+} from 'billboard.js';
 import '../cosmoz-chart';
 
 export default {
@@ -13,6 +15,7 @@ const timeseries = () => html`
 	<cosmoz-chart
 		.config=${ { axis: { x: { type: 'timeseries' }}} }
 		.data=${ {
+			type: line(),
 			x: 'time',
 			columns: [['time', '2019-03-13', '2019-03-25', '2019-04-02'], ['errors', 1, 5, 6]]
 		} }
