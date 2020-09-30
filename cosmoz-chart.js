@@ -6,6 +6,7 @@ import bb from 'billboard.js';
 export { utcFormat } from 'd3-time-format';
 export { format } from 'd3-format';
 export { schemePaired as defaultColorScheme } from 'd3-scale-chromatic';
+export * from 'billboard.js';
 
 const
 	/**

@@ -2,8 +2,7 @@ import {
 	assert, html, fixture, fixtureSync, nextFrame, oneEvent
 } from '@open-wc/testing';
 import { spy } from 'sinon';
-import { line } from 'billboard.js';
-import '../cosmoz-chart.js';
+import { line } from '../cosmoz-chart.js';
 
 const intersects = (el1, el2) => {
 		const r1 = el1.getBoundingClientRect(),

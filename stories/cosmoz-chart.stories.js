@@ -2,8 +2,7 @@
 import { html } from 'haunted';
 import {
 	donut as bbDonut, line
-} from 'billboard.js';
-import '../cosmoz-chart';
+} from '../cosmoz-chart';
 
 export default {
 	title: 'Chart',
