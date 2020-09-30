@@ -86,13 +86,13 @@ const
 		}, [config]);
 
 		useEffect(() => {
-			chartRef.chart?.load(data);
+			chartRef.chart?.load(data); /* eslint-disable-line no-unused-expressions */
 		}, [data]);
 
 		useChartResize(host, chartRef);
 
 		useEffect(() => () => requestAnimationFrame(() => {
-			chartRef.chart?.destroy();
+			chartRef.chart?.destroy(); /* eslint-disable-line no-unused-expressions */
 		}), []);
 	},
 	renderChart = () => html`
