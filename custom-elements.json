@@ -1,0 +1,23 @@
+{
+	"version": 2,
+	"tags": [
+		{
+			"name": "cosmoz-chart",
+			"properties": [
+				{
+					"name": "data",
+					"type": "String",
+					"description": "The data"
+				},
+				{
+					"name": "config",
+					"type": "String",
+					"description": "The config`"
+				}
+			],
+			"events": [],
+			"slots": [],
+			"cssProperties": []
+		}
+	]
+}
