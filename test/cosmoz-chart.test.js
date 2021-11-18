@@ -1,6 +1,4 @@
-import {
-	assert, html, fixture, fixtureSync, nextFrame, oneEvent
-} from '@open-wc/testing';
+import { assert, html, fixture, fixtureSync, nextFrame, oneEvent } from '@open-wc/testing';
 import { spy } from 'sinon';
 import { line } from '../cosmoz-chart.js';
 
