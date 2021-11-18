@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/Neovici/cosmoz-charts/compare/v2.0.0...v2.0.1) (2021-11-18)
+
+
+### Bug Fixes
+
+* misc updates ([64fbc12](https://github.com/Neovici/cosmoz-charts/commit/64fbc122f57ad08b3d2268fb62781bde6eb823eb))
+
 # [2.0.0](https://github.com/Neovici/cosmoz-charts/compare/v1.5.1...v2.0.0) (2020-09-30)
 
 

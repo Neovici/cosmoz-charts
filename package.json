@@ -1,6 +1,6 @@
 {
   "name": "@neovici/cosmoz-charts",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "Create beautiful charts using billboard.js",
   "keywords": [
     "charts",
@@ -25,14 +25,14 @@
   ],
   "scripts": {
     "lint": "eslint --cache --ext .js .",
-		"lint-tsc": "tsc",
-		"start": "npm run storybook",
-		"test": "wtr --coverage",
-		"test:watch": "wtr --watch",
-		"storybook": "start-storybook --node-resolve --watch --open",
-		"storybook:build": "build-storybook",
-		"storybook:deploy": "storybook-to-ghpages",
-		"prepare": "husky install"
+    "lint-tsc": "tsc",
+    "start": "npm run storybook",
+    "test": "wtr --coverage",
+    "test:watch": "wtr --watch",
+    "storybook": "start-storybook --node-resolve --watch --open",
+    "storybook:build": "build-storybook",
+    "storybook:deploy": "storybook-to-ghpages",
+    "prepare": "husky install"
   },
   "release": {
     "plugins": [
