@@ -1,101 +1,64 @@
-import { component, html, useEffect, useMemo } from 'haunted';
-import { bb } from 'billboard.js';
+import { html, component, useEffect, useMemo } from 'haunted';
+import * as echarts from 'echarts/core';
+import {
+	GridComponent,
+	LegendComponent,
+	TitleComponent,
+	TooltipComponent
+} from 'echarts/components';
+import { LineChart, PieChart } from 'echarts/charts';
+import { LabelLayout, UniversalTransition } from 'echarts/features';
+import { CanvasRenderer } from 'echarts/renderers';
 
-export { utcFormat } from 'd3-time-format';
-export { format } from 'd3-format';
-export { schemePaired as defaultColorScheme } from 'd3-scale-chromatic';
-export { line, donut } from 'billboard.js';
+echarts.use([
+	GridComponent,
+	TitleComponent,
+	TooltipComponent,
+	LegendComponent,
+	LineChart,
+	PieChart,
+	CanvasRenderer,
+	LabelLayout,
+	UniversalTransition
+]);
 
 const
-	/**
-	 * Chart events
-	 * @type {Array}
-	 */
-	bbEvents = [
-		'onafterinit',
-		'onbeforeinit',
-		'oninit',
-		'onout',
-		'onover',
-		'onrendered',
-		'onresize',
-		'onresized'
-	],
-
-	/**
-	* Chart datapoint events
-	* @type {Array}
-	*/
-	bbDataEvents = [
-		'onclick',
-		'onmax',
-		'onmin',
-		'onout',
-		'onover',
-		'onselected',
-		'onunselected'
-	],
-	getBBEvents = host => Object.fromEntries(bbEvents.map(ev => [ev, () => host.dispatchEvent(new CustomEvent(ev.replace('on', '')))])),
-	getBBDataEvents = host => Object.fromEntries(bbDataEvents.map(ev => [ev, (d, el) =>
-		host.dispatchEvent(new CustomEvent(ev.replace('on', '').replace('click', 'dataclick'), {
-			detail: {
-				d,
-				el
-			}
-		}))])),
-	configure = (cfg, host, bindto) => ({
-		...getBBEvents(host),
-		...cfg,
-		data: {
-			...host.data,
-			...getBBDataEvents(host)
-		},
-		bindto
-	}),
-	useChartResize = (host, chartRef) => useEffect(() => {
-		const observer = new ResizeObserver(entries => requestAnimationFrame(() => {
-			const width = entries[0]?.contentRect.width;
-			if (width === 0 || width === chartRef.width) {
-				return;
-			}
-			chartRef.width = width;
-			chartRef.chart.internal.cache.cache = {};
-			chartRef.chart.resize();
-		}));
-
-		observer.observe(host);
-
-		return () => {
-			observer.unobserve(host);
-		};
-	}, []),
-
 	useChart = host => {
-		const {
-				config,
-				data
-			} = host,
-			chartRef = useMemo(() => ({
-				el: host.appendChild(document.createElement('div')),
-				width: 0
-			}), []);
+		const { option } = host,
+			ref = useMemo(() => ({ }), []);
 
 		useEffect(() => {
-			chartRef.chart = bb.generate(configure(config, host, chartRef.el));
-		}, [config]);
+			const chart = echarts.init(host),
+				onClick = detail => host.dispatchEvent(new CustomEvent('data-click', { detail }));
+
+			chart.on('click', onClick);
+			ref.chart = chart;
+
+			return () => {
+				chart.off('click', onClick);
+				chart.dispose();
+			};
+		}, []);
 
 		useEffect(() => {
-			chartRef.chart?.load(data); /* eslint-disable-line no-unused-expressions */
-		}, [data]);
+			ref.chart.setOption(option);
+		}, [option]);
 
-		useChartResize(host, chartRef);
-
-		useEffect(() => () => requestAnimationFrame(() => {
-			chartRef.chart?.destroy(); /* eslint-disable-line no-unused-expressions */
-		}), []);
+		useEffect(() => {
+			const observer = new ResizeObserver(() => requestAnimationFrame(() => {
+				ref.chart.resize();
+			}));
+			observer.observe(host);
+			return () => observer.unobserve(host);
+		}, []);
 	},
 	renderChart = () => html`
-		<style>:host { display: block }</style>
+		<style>
+			:host{
+				display: block;
+				min-height: var(--cosmoz-chart-min-height, 320px);
+			}
+		</style>
 		<slot></slot>
 	`,
 
@@ -104,19 +67,16 @@ const
 	 * @return {TemplateResult}
 	 *
 	 * `cosmoz-chart`
-	 * Create beautiful charts using billboard.js.
+	 * Create beautiful charts using [echarts](https://echarts.apache.org).
 	 *
-	 * All billboard.js configuration options are exposed as properties. All events
-	 * are dispatched as CustomEvents.
+	 * All echarts configuration options can be set using the `option` property.
+	 * The echarts `click` event is exposed as `data-click`.
 	 *
-	 * ## Billboard.js Documentation
-	 * * [API](https://naver.github.io/billboard.js/release/latest/doc/index.html)
-	 * * [Examples](https://naver.github.io/billboard.js/demo/)
 	 *
 	 * @customElement
-	 * @polymer
-	 * @demo demo/index.html
 	 */
 	chart = host => renderChart(useChart(host));
 
 customElements.define('cosmoz-chart', component(chart));
+
+export { echarts };

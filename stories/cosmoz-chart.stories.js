@@ -1,44 +1,74 @@
 /* eslint-disable no-alert, camelcase */
 import { html } from 'haunted';
-import {
-	donut as bbDonut, line
-} from '../cosmoz-chart';
+import '../cosmoz-chart';
 
 export default {
 	title: 'Chart',
 	component: 'cosmoz-chart'
 };
 
-const timeseries = () => html`
-	<link rel="stylesheet" href="/node_modules/billboard.js/dist/billboard.css">
-	<cosmoz-chart
-		.config=${ { axis: { x: { type: 'timeseries' }}} }
-		.data=${ {
-			type: line(),
-			x: 'time',
-			columns: [['time', '2019-03-13', '2019-03-25', '2019-04-02'], ['errors', 1, 5, 6]]
-		} }
-	></cosmoz-chart>
-`,
+const
+	line = () => {
+		const option = {
+			xAxis: {
+				type: 'category',
+				data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+			},
+			yAxis: {
+				type: 'value'
+			},
+			series: [
+				{
+					data: [150, 230, 224, 218, 135, 147, 260],
+					type: 'line'
+				}
+			]
+		};
+		return html`<cosmoz-chart .option=${ option }>`;
 
-	donut = () => html`
-	<cosmoz-chart
-		.data=${ {
-			columns: [
-				['supplier_missing', 120],
-				['duplicate', 37],
-				['reasonable_error', 1]
-			],
-			type: bbDonut(),
-			names: {
-				supplier_missing: 'Supplier missing'
-			}
-		} }
-		@dataclick=${ () => alert('dataclick') }
-	></cosmoz-chart>
-`;
+	},
+
+	donut = () => {
+		const option = {
+			tooltip: {
+				trigger: 'item'
+			},
+			legend: {
+				top: '5%',
+				left: 'center'
+			},
+			series: [
+				{
+					name: 'Access From',
+					type: 'pie',
+					radius: ['40%', '70%'],
+					avoidLabelOverlap: false,
+					label: {
+						show: false,
+						position: 'center'
+					},
+					emphasis: {
+						label: {
+							show: true
+						}
+					},
+					labelLine: {
+						show: false
+					},
+					data: [
+						{ value: 1048, name: 'Search Engine' },
+						{ value: 735, name: 'Direct' },
+						{ value: 580, name: 'Email' },
+						{ value: 484, name: 'Union Ads' },
+						{ value: 300, name: 'Video Ads' }
+					]
+				}
+			]
+		};
+		return html`<cosmoz-chart .option=${ option } @data-click=${ () => alert('data-click') }>`;
+	};
 
 export {
-	timeseries,
+	line,
 	donut
 };
