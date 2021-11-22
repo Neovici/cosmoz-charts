@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/Neovici/cosmoz-charts/compare/v2.0.1...v3.0.0) (2021-11-22)
+
+
+### Features
+
+* **cosmoz-chart:** replace billboard.js with echarts ([e692dc6](https://github.com/Neovici/cosmoz-charts/commit/e692dc67d6e3e6a53378af9ee452ba04f9d6785f))
+
+
+### BREAKING CHANGES
+
+* **cosmoz-chart:** Replaces billboard.js with echarts
+
 ## [2.0.1](https://github.com/Neovici/cosmoz-charts/compare/v2.0.0...v2.0.1) (2021-11-18)
 
 
