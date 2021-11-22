@@ -1,5 +1,4 @@
 import { assert, html, fixture } from '@open-wc/testing';
-import { spy } from 'sinon';
 import '../cosmoz-chart.js';
 
 suite('cosmoz-chart', () => {
