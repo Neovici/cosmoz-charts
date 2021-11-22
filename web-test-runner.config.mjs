@@ -1,7 +1,11 @@
 import { chromeLauncher } from '@web/test-runner';
+import { fromRollup } from '@web/dev-server-rollup';
+import rollupReplace from '@rollup/plugin-replace';
 import { seleniumLauncher } from '@web/test-runner-selenium';
 import webdriver from 'selenium-webdriver';
 import firefox from 'selenium-webdriver/firefox.js';
+
+const replace = fromRollup(rollupReplace);
 
 export default {
 	nodeResolve: true,
@@ -14,6 +18,15 @@ export default {
 			lines: 70
 		}
 	},
+
+	plugins: [
+		replace({
+			preventAssignment: true,
+			include: ['node_modules/echarts/**/*.js'],
+			'process.env.NODE_ENV': '"development"'
+		})
+	],
+
 	files: [
 		'**!(node_modules)/*.test.js'
 	],
