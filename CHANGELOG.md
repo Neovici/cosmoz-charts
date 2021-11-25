@@ -1,3 +1,10 @@
+## [3.0.1](https://github.com/Neovici/cosmoz-charts/compare/v3.0.0...v3.0.1) (2021-11-25)
+
+
+### Bug Fixes
+
+* resize glitch in flex layout ([9f8dacd](https://github.com/Neovici/cosmoz-charts/commit/9f8dacde977b14dc22d532128763f173b1f41703))
+
 # [3.0.0](https://github.com/Neovici/cosmoz-charts/compare/v2.0.1...v3.0.0) (2021-11-22)
 
 
