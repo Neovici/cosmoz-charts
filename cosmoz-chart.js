@@ -45,9 +45,9 @@ const
 		}, [option]);
 
 		useEffect(() => {
-			const observer = new ResizeObserver(() => requestAnimationFrame(() => {
-				ref.chart.resize();
-			}));
+			const observer = new ResizeObserver(entries => requestAnimationFrame(() => ref.chart.resize({
+				width: entries[0]?.contentRect.width
+			})));
 			observer.observe(host);
 			return () => observer.unobserve(host);
 		}, []);
