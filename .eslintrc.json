@@ -1,6 +1,0 @@
-{
-	"extends": "@neovici",
-	"rules": {
-		"indent": ["error", "tab", { "ignoredNodes": ["TemplateLiteral *"] }]
-	}
-}
