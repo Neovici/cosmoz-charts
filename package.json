@@ -53,13 +53,13 @@
   },
   "dependencies": {
     "echarts": "^5.2.2",
-    "haunted": "^4.7.0"
+    "haunted": "^5.0.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.0.0",
     "@commitlint/config-conventional": "^17.0.0",
     "@neovici/cfg": "^1.15.2",
-    "@open-wc/testing": "^2.5.29",
+    "@open-wc/testing": "^3.0.0",
     "@rollup/plugin-replace": "^4.0.0",
     "@semantic-release/changelog": "^6.0.0",
     "@semantic-release/git": "^10.0.0",
