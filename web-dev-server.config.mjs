@@ -5,7 +5,7 @@ import rollupReplace from '@rollup/plugin-replace';
 
 export const replace = fromRollup(rollupReplace)({
 	preventAssignment: true,
-	include: ['node_modules/echarts/**/*.js'],
+	include: ['node_modules/(echarts|zrender)/**/*.js'],
 	'process.env.NODE_ENV': '"development"',
 });
 
