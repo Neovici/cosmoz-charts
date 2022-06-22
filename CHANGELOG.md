@@ -1,3 +1,15 @@
+# [4.0.0-beta.1](https://github.com/Neovici/cosmoz-charts/compare/v3.0.1...v4.0.0-beta.1) (2022-06-15)
+
+
+### Features
+
+* upgrade to lit@^2 ([0edc3b2](https://github.com/Neovici/cosmoz-charts/commit/0edc3b23110e1aebd399d5d466f924fdba49fc8e))
+
+
+### BREAKING CHANGES
+
+* Upgrade to lit2 and haunted 5
+
 ## [3.0.1](https://github.com/Neovici/cosmoz-charts/compare/v3.0.0...v3.0.1) (2021-11-25)
 
 
