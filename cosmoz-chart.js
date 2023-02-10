@@ -24,11 +24,11 @@ echarts.use([
 
 const
 	useChart = host => {
-		const { option } = host,
+		const { option, theme, initOpts } = host,
 			ref = useMemo(() => ({ }), []);
 
 		useEffect(() => {
-			const chart = echarts.init(host),
+			const chart = echarts.init(host, theme, initOpts),
 				onClick = detail => host.dispatchEvent(new CustomEvent('data-click', { detail }));
 
 			chart.on('click', onClick);
@@ -38,11 +38,11 @@ const
 				chart.off('click', onClick);
 				chart.dispose();
 			};
-		}, []);
+		}, [theme, initOpts]);
 
 		useEffect(() => {
 			ref.chart.setOption(option);
-		}, [option]);
+		}, [option, theme, initOpts]);
 
 		useEffect(() => {
 			const observer = new ResizeObserver(entries => requestAnimationFrame(() => ref.chart.resize({
