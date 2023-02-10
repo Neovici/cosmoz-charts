@@ -1,3 +1,10 @@
+# [4.2.0](https://github.com/Neovici/cosmoz-charts/compare/v4.1.0...v4.2.0) (2023-02-10)
+
+
+### Features
+
+* support passing echarts theme and init options ([a909645](https://github.com/Neovici/cosmoz-charts/commit/a909645c8121cf4c9ee2ed813c6f0e3b869e7407))
+
 # [4.1.0](https://github.com/Neovici/cosmoz-charts/compare/v4.0.0...v4.1.0) (2022-12-08)
 
 
