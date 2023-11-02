@@ -1,3 +1,10 @@
+# [4.3.0](https://github.com/Neovici/cosmoz-charts/compare/v4.2.0...v4.3.0) (2023-11-02)
+
+
+### Features
+
+* update deps ([28d1f3b](https://github.com/Neovici/cosmoz-charts/commit/28d1f3bd656a50707b52c4fa78a949ccbe6ef428))
+
 # [4.2.0](https://github.com/Neovici/cosmoz-charts/compare/v4.1.0...v4.2.0) (2023-02-10)
 
 
