@@ -4,7 +4,7 @@ import {
 	GridComponent,
 	LegendComponent,
 	TitleComponent,
-	TooltipComponent
+	TooltipComponent,
 } from 'echarts/components';
 import { LineChart, PieChart } from 'echarts/charts';
 import { LabelLayout, UniversalTransition } from 'echarts/features';
@@ -19,17 +19,17 @@ echarts.use([
 	PieChart,
 	CanvasRenderer,
 	LabelLayout,
-	UniversalTransition
+	UniversalTransition,
 ]);
 
-const
-	useChart = host => {
+const useChart = (host) => {
 		const { option, theme, initOpts } = host,
-			ref = useMemo(() => ({ }), []);
+			ref = useMemo(() => ({}), []);
 
 		useEffect(() => {
 			const chart = echarts.init(host, theme, initOpts),
-				onClick = detail => host.dispatchEvent(new CustomEvent('data-click', { detail }));
+				onClick = (detail) =>
+					host.dispatchEvent(new CustomEvent('data-click', { detail }));
 
 			chart.on('click', onClick);
 			ref.chart = chart;
@@ -45,23 +45,26 @@ const
 		}, [option, theme, initOpts]);
 
 		useEffect(() => {
-			const observer = new ResizeObserver(entries => requestAnimationFrame(() => ref.chart.resize({
-				width: entries[0]?.contentRect.width
-			})));
+			const observer = new ResizeObserver((entries) =>
+				requestAnimationFrame(() =>
+					ref.chart.resize({
+						width: entries[0]?.contentRect.width,
+					}),
+				),
+			);
 			observer.observe(host);
 			return () => observer.unobserve(host);
 		}, []);
 	},
 	renderChart = () => html`
 		<style>
-			:host{
+			:host {
 				display: block;
 				min-height: var(--cosmoz-chart-min-height, 320px);
 			}
 		</style>
 		<slot></slot>
 	`,
-
 	/**
 	 * @param {HTMLElement} host The host custom element
 	 * @return {TemplateResult}
@@ -75,7 +78,7 @@ const
 	 *
 	 * @customElement
 	 */
-	chart = host => renderChart(useChart(host));
+	chart = (host) => renderChart(useChart(host));
 
 customElements.define('cosmoz-chart', component(chart));
 
