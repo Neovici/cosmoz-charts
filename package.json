@@ -52,20 +52,19 @@
     ]
   },
   "dependencies": {
-    "echarts": "^5.4.0",
-    "haunted": "^5.0.0"
+    "@pionjs/pion": "^2.0.0",
+    "echarts": "^5.4.0"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.0.0",
     "@commitlint/config-conventional": "^18.0.0",
     "@neovici/cfg": "^1.15.2",
-    "@open-wc/testing": "^3.0.0",
-    "@rollup/plugin-replace": "^5.0.0",
+    "@open-wc/testing": "^4.0.0",
+    "@rollup/plugin-replace": "^5.0.5",
     "@semantic-release/changelog": "^6.0.0",
     "@semantic-release/git": "^10.0.0",
     "@storybook/storybook-deployer": "^2.8.10",
-    "@web/dev-server-rollup": "^0.6.0",
-    "@web/dev-server-storybook": "^1.0.0",
+    "@web/dev-server-storybook": "^2.0.0",
     "@web/test-runner-selenium": "^0.7.0",
     "husky": "^8.0.0",
     "semantic-release": "^22.0.1",

@@ -1,41 +1,38 @@
 /* eslint-disable no-alert, camelcase */
-import { html } from 'haunted';
+import { html } from '@pionjs/pion';
 import '../cosmoz-chart';
 
 export default {
 	title: 'Chart',
-	component: 'cosmoz-chart'
+	component: 'cosmoz-chart',
 };
 
-const
-	line = () => {
+const line = () => {
 		const option = {
 			xAxis: {
 				type: 'category',
-				data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+				data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
 			},
 			yAxis: {
-				type: 'value'
+				type: 'value',
 			},
 			series: [
 				{
 					data: [150, 230, 224, 218, 135, 147, 260],
-					type: 'line'
-				}
-			]
+					type: 'line',
+				},
+			],
 		};
-		return html`<cosmoz-chart .option=${ option }>`;
-
+		return html`<cosmoz-chart .option=${option}></cosmoz-chart>`;
 	},
-
 	donut = () => {
 		const option = {
 			tooltip: {
-				trigger: 'item'
+				trigger: 'item',
 			},
 			legend: {
 				top: '5%',
-				left: 'center'
+				left: 'center',
 			},
 			series: [
 				{
@@ -45,30 +42,30 @@ const
 					avoidLabelOverlap: false,
 					label: {
 						show: false,
-						position: 'center'
+						position: 'center',
 					},
 					emphasis: {
 						label: {
-							show: true
-						}
+							show: true,
+						},
 					},
 					labelLine: {
-						show: false
+						show: false,
 					},
 					data: [
 						{ value: 1048, name: 'Search Engine' },
 						{ value: 735, name: 'Direct' },
 						{ value: 580, name: 'Email' },
 						{ value: 484, name: 'Union Ads' },
-						{ value: 300, name: 'Video Ads' }
-					]
-				}
-			]
+						{ value: 300, name: 'Video Ads' },
+					],
+				},
+			],
 		};
-		return html`<cosmoz-chart .option=${ option } @data-click=${ () => alert('data-click') }>`;
+		return html`<cosmoz-chart
+			.option=${option}
+			@data-click=${() => alert('data-click')}
+		></cosmoz-chart>`;
 	};
 
-export {
-	line,
-	donut
-};
+export { line, donut };

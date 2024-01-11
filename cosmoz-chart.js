@@ -1,4 +1,4 @@
-import { html, component, useEffect, useMemo } from 'haunted';
+import { html, component, useEffect, useMemo } from '@pionjs/pion';
 import * as echarts from 'echarts/core';
 import {
 	GridComponent,
