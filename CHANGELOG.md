@@ -1,3 +1,15 @@
+# [5.0.0](https://github.com/Neovici/cosmoz-charts/compare/v4.3.0...v5.0.0) (2024-01-11)
+
+
+### Features
+
+* update to pion ([046a5bf](https://github.com/Neovici/cosmoz-charts/commit/046a5bff6e865df1f644f3f72ce1c5a56cec8561))
+
+
+### BREAKING CHANGES
+
+* Update to @pionjs/pion
+
 # [4.3.0](https://github.com/Neovici/cosmoz-charts/compare/v4.2.0...v4.3.0) (2023-11-02)
 
 
