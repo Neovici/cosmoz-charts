@@ -1,5 +1,4 @@
 import cfg from '@neovici/cfg/web/dev-server.mjs';
-import { storybookPlugin } from '@web/dev-server-storybook';
 import { fromRollup } from '@web/dev-server-rollup';
 import rollupReplace from '@rollup/plugin-replace';
 
@@ -11,9 +10,5 @@ export const replace = fromRollup(rollupReplace)({
 
 export default {
 	...cfg,
-	plugins: [
-		...cfg.plugins,
-		replace,
-		storybookPlugin({ type: 'web-components' }),
-	],
+	plugins: [...cfg.plugins, replace],
 };
