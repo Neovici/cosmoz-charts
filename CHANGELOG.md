@@ -1,3 +1,13 @@
+# [5.1.0](https://github.com/Neovici/cosmoz-charts/compare/v5.0.0...v5.1.0) (2024-05-31)
+
+
+### Features
+
+* don't use the comma version of const ([7bf68bb](https://github.com/Neovici/cosmoz-charts/commit/7bf68bb5c08e2983ffb9d593d8059269faa84d69))
+* run `npm update --save` ([ba16945](https://github.com/Neovici/cosmoz-charts/commit/ba16945719ff84ef23bae60066fe5ba01b645e26))
+* update dependencies ([09a4f58](https://github.com/Neovici/cosmoz-charts/commit/09a4f5832aea9eb89b1e0ec07022468ed11b683d))
+* update storybook to version seven ([03db89a](https://github.com/Neovici/cosmoz-charts/commit/03db89af88e724be3d8249a9075a4ba88c0948f0))
+
 # [5.0.0](https://github.com/Neovici/cosmoz-charts/compare/v4.3.0...v5.0.0) (2024-01-11)
 
 
