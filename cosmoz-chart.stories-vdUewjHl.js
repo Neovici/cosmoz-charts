@@ -14269,7 +14269,6 @@ var CompoundPath = (function (_super) {
     };
     return CompoundPath;
 }(Path));
-var CompoundPath$1 = CompoundPath;
 
 var Gradient = (function () {
     function Gradient(colorStops) {
@@ -14298,7 +14297,6 @@ var LinearGradient = (function (_super) {
     }
     return LinearGradient;
 }(Gradient));
-var LinearGradient$1 = LinearGradient;
 
 var RadialGradient = (function (_super) {
     __extends(RadialGradient, _super);
@@ -14313,7 +14311,6 @@ var RadialGradient = (function (_super) {
     }
     return RadialGradient;
 }(Gradient));
-var RadialGradient$1 = RadialGradient;
 
 var extent = [0, 0];
 var extent2 = [0, 0];
@@ -14433,7 +14430,6 @@ var OrientedBoundingRect = (function () {
     };
     return OrientedBoundingRect;
 }());
-var OrientedBoundingRect$1 = OrientedBoundingRect;
 
 var m = [];
 var IncrementalDisplayable = (function (_super) {
@@ -14543,7 +14539,6 @@ var IncrementalDisplayable = (function (_super) {
     };
     return IncrementalDisplayable;
 }(Displayable));
-var IncrementalDisplayable$1 = IncrementalDisplayable;
 
 // Stored properties for further transition.
 var transitionStore = makeInner();
@@ -15194,19 +15189,19 @@ var graphic = /*#__PURE__*/Object.freeze({
     BezierCurve: BezierCurve,
     BoundingRect: BoundingRect,
     Circle: Circle,
-    CompoundPath: CompoundPath$1,
+    CompoundPath: CompoundPath,
     Ellipse: Ellipse,
     Group: Group$3,
     Image: ZRImage,
-    IncrementalDisplayable: IncrementalDisplayable$1,
+    IncrementalDisplayable: IncrementalDisplayable,
     Line: Line$1,
-    LinearGradient: LinearGradient$1,
-    OrientedBoundingRect: OrientedBoundingRect$1,
+    LinearGradient: LinearGradient,
+    OrientedBoundingRect: OrientedBoundingRect,
     Path: Path,
     Point: Point,
     Polygon: Polygon,
     Polyline: Polyline$1,
-    RadialGradient: RadialGradient$1,
+    RadialGradient: RadialGradient,
     Rect: Rect$2,
     Ring: Ring,
     Sector: Sector,
@@ -33932,7 +33927,7 @@ function prepareLayoutList(input) {
     globalRect.y -= minMargin / 2;
     globalRect.width += minMargin;
     globalRect.height += minMargin;
-    var obb = isAxisAligned ? new OrientedBoundingRect$1(localRect, transform) : null;
+    var obb = isAxisAligned ? new OrientedBoundingRect(localRect, transform) : null;
     list.push({
       label: label,
       labelLine: rawItem.labelLine,
@@ -34146,11 +34141,11 @@ function hideOverlap(labelList) {
       }
       if (!existsTextCfg.obb) {
         // If self is not axis aligned. But other is.
-        existsTextCfg.obb = new OrientedBoundingRect$1(existsTextCfg.localRect, existsTextCfg.transform);
+        existsTextCfg.obb = new OrientedBoundingRect(existsTextCfg.localRect, existsTextCfg.transform);
       }
       if (!obb) {
         // If self is axis aligned. But other is not.
-        obb = new OrientedBoundingRect$1(localRect, transform);
+        obb = new OrientedBoundingRect(localRect, transform);
       }
       if (obb.intersect(existsTextCfg.obb)) {
         overlapped = true;
@@ -39537,7 +39532,7 @@ var paintServerParsers = {
         var y1 = parseInt(xmlNode.getAttribute('y1') || '0', 10);
         var x2 = parseInt(xmlNode.getAttribute('x2') || '10', 10);
         var y2 = parseInt(xmlNode.getAttribute('y2') || '0', 10);
-        var gradient = new LinearGradient$1(x1, y1, x2, y2);
+        var gradient = new LinearGradient(x1, y1, x2, y2);
         parsePaintServerUnit(xmlNode, gradient);
         parseGradientColorStops(xmlNode, gradient);
         return gradient;
@@ -39546,7 +39541,7 @@ var paintServerParsers = {
         var cx = parseInt(xmlNode.getAttribute('cx') || '0', 10);
         var cy = parseInt(xmlNode.getAttribute('cy') || '0', 10);
         var r = parseInt(xmlNode.getAttribute('r') || '0', 10);
-        var gradient = new RadialGradient$1(cx, cy, r);
+        var gradient = new RadialGradient(cx, cy, r);
         parsePaintServerUnit(xmlNode, gradient);
         parseGradientColorStops(xmlNode, gradient);
         return gradient;
@@ -41456,7 +41451,7 @@ var MapDraw = /** @class */function () {
         if (!subpaths.length) {
           return;
         }
-        var compoundPath = new CompoundPath$1({
+        var compoundPath = new CompoundPath({
           culling: true,
           segmentIgnoreThreshold: 1,
           shape: {
@@ -56212,7 +56207,7 @@ var HOVER_LINK_OUT = 6;
     var symbolSizes = [this.getControllerVisual(dataInterval[0], 'symbolSize', opts), this.getControllerVisual(dataInterval[1], 'symbolSize', opts)];
     var barPoints = this._createBarPoints(handleEnds, symbolSizes);
     return {
-      barColor: new LinearGradient$1(0, 0, 0, 1, colorStops),
+      barColor: new LinearGradient(0, 0, 0, 1, colorStops),
       barPoints: barPoints,
       handlesColor: [colorStops[0].color, colorStops[colorStops.length - 1].color]
     };
@@ -58065,7 +58060,7 @@ function getVisualGradient(data, coordSys, api) {
     offset: inRangeStopLen ? colorStopsInRange[0].offset : 0.5,
     color: outerColors[0] || 'transparent'
   });
-  var gradient = new LinearGradient$1(0, 0, 0, 0, colorStopsInRange, true);
+  var gradient = new LinearGradient(0, 0, 0, 0, colorStopsInRange, true);
   gradient[coordDim] = minCoord;
   gradient[coordDim + '2'] = maxCoord;
   return gradient;
@@ -67894,7 +67889,7 @@ function applyCurveStyle(curveProps, orient, edge) {
       var sourceColor = edge.node1.getVisual('color');
       var targetColor = edge.node2.getVisual('color');
       if (isString(sourceColor) && isString(targetColor)) {
-        curveProps.fill = new LinearGradient$1(0, 0, +(orient === 'horizontal'), +(orient === 'vertical'), [{
+        curveProps.fill = new LinearGradient(0, 0, +(orient === 'horizontal'), +(orient === 'vertical'), [{
           color: sourceColor,
           offset: 0
         }, {
