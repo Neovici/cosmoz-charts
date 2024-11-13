@@ -55,6 +55,7 @@
 		]
 	},
 	"dependencies": {
+		"@neovici/cosmoz-utils": "^6.12.0",
 		"@pionjs/pion": "^2.5.2",
 		"echarts": "^5.5.0"
 	},

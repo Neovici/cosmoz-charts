@@ -1,4 +1,5 @@
-import { html, component, useEffect, useMemo } from '@pionjs/pion';
+import { html, component, useEffect } from '@pionjs/pion';
+import { useMeta } from '@neovici/cosmoz-utils/hooks/use-meta';
 import * as echarts from 'echarts/core';
 import {
 	GridComponent,
@@ -24,7 +25,7 @@ echarts.use([
 
 const useChart = (host) => {
 		const { option, theme, initOpts } = host,
-			ref = useMemo(() => ({}), []);
+			meta = useMeta({ chart: undefined, lastOption: undefined });
 
 		useEffect(() => {
 			const chart = echarts.init(host, theme, initOpts),
@@ -32,7 +33,7 @@ const useChart = (host) => {
 					host.dispatchEvent(new CustomEvent('data-click', { detail }));
 
 			chart.on('click', onClick);
-			ref.chart = chart;
+			meta.chart = chart;
 
 			return () => {
 				chart.off('click', onClick);
@@ -41,13 +42,23 @@ const useChart = (host) => {
 		}, [theme, initOpts]);
 
 		useEffect(() => {
-			ref.chart.setOption(option);
+			// when a series is removed, echarts does not remove it from the view
+			// as a workaround, when the number of series falls, we clear the chart
+			// @see https://github.com/apache/echarts/issues/15585
+			if (
+				meta.lastOption &&
+				meta.lastOption.series?.length > option.series?.length
+			) {
+				meta.chart.clear();
+			}
+			meta.chart.setOption(option);
+			meta.lastOption = option;
 		}, [option, theme, initOpts]);
 
 		useEffect(() => {
 			const observer = new ResizeObserver((entries) =>
 				requestAnimationFrame(() =>
-					ref.chart.resize({
+					meta.chart.resize({
 						width: entries[0]?.contentRect.width,
 					}),
 				),
