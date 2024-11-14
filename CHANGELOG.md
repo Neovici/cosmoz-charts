@@ -1,3 +1,10 @@
+## [5.1.1](https://github.com/Neovici/cosmoz-charts/compare/v5.1.0...v5.1.1) (2024-11-14)
+
+
+### Bug Fixes
+
+* removed series are still displayed ([d39f93a](https://github.com/Neovici/cosmoz-charts/commit/d39f93a9eaec9c302d876e4dd8f1294983a43e72))
+
 # [5.1.0](https://github.com/Neovici/cosmoz-charts/compare/v5.0.0...v5.1.0) (2024-05-31)
 
 
