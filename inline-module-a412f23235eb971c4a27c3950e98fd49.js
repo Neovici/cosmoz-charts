@@ -11,7 +11,7 @@ if (SERVER_CHANNEL_URL) {
 }
 
 const importers = {
-  "./stories/cosmoz-chart.stories.js": () => import('./cosmoz-chart.stories-vdUewjHl.js')
+  "./stories/cosmoz-chart.stories.js": () => import('./cosmoz-chart.stories-D6JjjiWw.js')
 };
 function importFn(path) {
   return importers[path]();

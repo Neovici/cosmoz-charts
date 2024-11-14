@@ -542,6 +542,18 @@ function pion({ render }) {
 
 const { component, createContext } = pion({ render: j });
 
+/**
+ * Copies properties of an Object into a memoized object.
+ * Useful to create an object that does not change.
+ *
+ * @param {Object} meta - The source object
+ * @returns {Object} The memoized object.
+ */
+const useMeta = (meta) => {
+    const ref = useMemo(() => ({}), []);
+    return useMemo(() => Object.assign(ref, meta), [ref, ...Object.values(meta)]);
+};
+
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation.
 
@@ -75935,23 +75947,27 @@ use([
   installUniversalTransition
 ]);
 const useChart = (host) => {
-  const { option, theme, initOpts } = host, ref = useMemo(() => ({}), []);
+  const { option, theme, initOpts } = host, meta = useMeta({ chart: void 0, lastOption: void 0 });
   useEffect(() => {
     const chart2 = init(host, theme, initOpts), onClick = (detail) => host.dispatchEvent(new CustomEvent("data-click", { detail }));
     chart2.on("click", onClick);
-    ref.chart = chart2;
+    meta.chart = chart2;
     return () => {
       chart2.off("click", onClick);
       chart2.dispose();
     };
   }, [theme, initOpts]);
   useEffect(() => {
-    ref.chart.setOption(option);
+    if (meta.lastOption && meta.lastOption.series?.length > option.series?.length) {
+      meta.chart.clear();
+    }
+    meta.chart.setOption(option);
+    meta.lastOption = option;
   }, [option, theme, initOpts]);
   useEffect(() => {
     const observer = new ResizeObserver(
       (entries) => requestAnimationFrame(
-        () => ref.chart.resize({
+        () => meta.chart.resize({
           width: entries[0]?.contentRect.width
         })
       )
