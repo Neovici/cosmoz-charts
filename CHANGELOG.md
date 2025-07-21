@@ -1,3 +1,10 @@
+## [5.2.1](https://github.com/Neovici/cosmoz-charts/compare/v5.2.0...v5.2.1) (2025-07-21)
+
+
+### Bug Fixes
+
+* commit lint duplicated ([528aa30](https://github.com/Neovici/cosmoz-charts/commit/528aa3079605e5c463ba6152915a68f3a8dc3875))
+
 # [5.2.0](https://github.com/Neovici/cosmoz-charts/compare/v5.1.1...v5.2.0) (2025-07-21)
 
 
