@@ -1,3 +1,10 @@
+## [5.2.2](https://github.com/Neovici/cosmoz-charts/compare/v5.2.1...v5.2.2) (2025-08-04)
+
+
+### Bug Fixes
+
+* automerge workflow ([97ab71c](https://github.com/Neovici/cosmoz-charts/commit/97ab71c70641e96452b03d05b669b615d65809d1))
+
 ## [5.2.1](https://github.com/Neovici/cosmoz-charts/compare/v5.2.0...v5.2.1) (2025-07-21)
 
 
