@@ -1,1 +1,0 @@
-{"v":5,"entries":{"chart--line":{"type":"story","id":"chart--line","name":"Line","title":"Chart","importPath":"./stories/cosmoz-chart.stories.js","tags":["dev","test"]},"chart--donut":{"type":"story","id":"chart--donut","name":"Donut","title":"Chart","importPath":"./stories/cosmoz-chart.stories.js","tags":["dev","test"]}}}
