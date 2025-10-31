@@ -1,3 +1,10 @@
+# [5.3.0](https://github.com/Neovici/cosmoz-charts/compare/v5.2.2...v5.3.0) (2025-10-31)
+
+
+### Features
+
+* upgrade echarts ([579dea4](https://github.com/Neovici/cosmoz-charts/commit/579dea446f806599c0cfc78bdc2d79ff8115b791))
+
 ## [5.2.2](https://github.com/Neovici/cosmoz-charts/compare/v5.2.1...v5.2.2) (2025-08-04)
 
 
