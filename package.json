@@ -57,7 +57,7 @@
 	"devDependencies": {
 		"@commitlint/cli": "^20.1.0",
 		"@commitlint/config-conventional": "^20.0.0",
-		"@neovici/cfg": "^1.53.0",
+		"@neovici/cfg": "^2.7.0",
 		"@open-wc/testing": "^4.0.0",
 		"@rollup/plugin-replace": "^6.0.2",
 		"@semantic-release/changelog": "^6.0.3",
