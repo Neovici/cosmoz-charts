@@ -1,0 +1,12 @@
+{
+  "*.(mjs|cjs|ts)": [
+    "eslint",
+    "prettier --write",
+    "eslint"
+  ],
+  "!(*snap).js": [
+    "eslint",
+    "prettier --write",
+    "eslint"
+  ]
+}
