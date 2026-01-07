@@ -10,12 +10,25 @@ on:
       - master
 
 permissions:
-  contents: write 
+  contents: write
   issues: write
   pull-requests: write
   id-token: write
-  
+
 jobs:
+  generate-token:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Generate Neovact token
+        id: generate-token
+        uses: actions/create-github-app-token@v2
+        with:
+          app-id: ${{ secrets.NEOVACT_APP_ID }}
+          private-key: ${{ secrets.NEOVACT_PRIVATE_KEY }}
+    outputs:
+      token: ${{ steps.generate-token.outputs.token }}
   build:
+    needs: generate-token
     uses: Neovici/cfg/.github/workflows/forge.yml@master
-    secrets: inherit
+    secrets:
+      token: ${{ needs.generate-token.outputs.token }}
