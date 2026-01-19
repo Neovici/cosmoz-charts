@@ -1,3 +1,17 @@
+# [5.4.0](https://github.com/Neovici/cosmoz-charts/compare/v5.3.0...v5.4.0) (2026-01-19)
+
+
+### Bug Fixes
+
+* trigger build ([d5e1503](https://github.com/Neovici/cosmoz-charts/commit/d5e15034b1e0833c23d6831fd0f87b19c9f174de))
+* trigger release ([0dc314c](https://github.com/Neovici/cosmoz-charts/commit/0dc314c833b8b260f7352ba1e8d0d712ae37c371))
+
+
+### Features
+
+* add Neovact token generation job to workflow ([ccc0d78](https://github.com/Neovici/cosmoz-charts/commit/ccc0d78035dbecce0b4c9deb761d091bd9719c99))
+* bump ([3809f80](https://github.com/Neovici/cosmoz-charts/commit/3809f80fc04899a3bc0ef586f1e75ef50d5085ce))
+
 # [5.3.0](https://github.com/Neovici/cosmoz-charts/compare/v5.2.2...v5.3.0) (2025-10-31)
 
 
