@@ -1,3 +1,10 @@
+## [5.4.1](https://github.com/Neovici/cosmoz-charts/compare/v5.4.0...v5.4.1) (2026-01-19)
+
+
+### Reverts
+
+* Revert "feat: add Neovact token generation job to workflow" ([#168](https://github.com/Neovici/cosmoz-charts/issues/168)) ([530b539](https://github.com/Neovici/cosmoz-charts/commit/530b53988bf300c165e1c082f810dbdb0f9b4b9a))
+
 # [5.4.0](https://github.com/Neovici/cosmoz-charts/compare/v5.3.0...v5.4.0) (2026-01-19)
 
 
