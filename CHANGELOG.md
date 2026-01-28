@@ -1,3 +1,10 @@
+# [5.5.0](https://github.com/Neovici/cosmoz-charts/compare/v5.4.1...v5.5.0) (2026-01-28)
+
+
+### Features
+
+* add duplicate web component check ([#177](https://github.com/Neovici/cosmoz-charts/issues/177)) ([199d54f](https://github.com/Neovici/cosmoz-charts/commit/199d54f14d834b16f61eec1cf7fe4ea3fbb3f331))
+
 ## [5.4.1](https://github.com/Neovici/cosmoz-charts/compare/v5.4.0...v5.4.1) (2026-01-19)
 
 

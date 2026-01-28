@@ -1,6 +1,6 @@
 {
 	"name": "@neovici/cosmoz-charts",
-	"version": "5.4.1",
+	"version": "5.5.0",
 	"description": "Create beautiful charts using billboard.js",
 	"keywords": [
 		"charts",
@@ -25,7 +25,7 @@
 	],
 	"scripts": {
 		"lint": "eslint --cache .",
-    "check:duplicates": "check-duplicate-components",
+		"check:duplicates": "check-duplicate-components",
 		"lint-tsc": "tsc",
 		"start": "npm run storybook:start",
 		"test": "wtr --coverage",
