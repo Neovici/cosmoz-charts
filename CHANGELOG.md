@@ -1,3 +1,10 @@
+# [5.6.0](https://github.com/Neovici/cosmoz-charts/compare/v5.5.0...v5.6.0) (2026-02-09)
+
+
+### Features
+
+* expose chart rendering completion via chart-rendered attribute and chart-finished event ([#189](https://github.com/Neovici/cosmoz-charts/issues/189)) ([cfb95cd](https://github.com/Neovici/cosmoz-charts/commit/cfb95cd4e68a3137fae3876a2e783e69de3b178a))
+
 # [5.5.0](https://github.com/Neovici/cosmoz-charts/compare/v5.4.1...v5.5.0) (2026-01-28)
 
 
