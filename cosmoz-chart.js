@@ -1,13 +1,13 @@
-import { html, component, useEffect } from '@pionjs/pion';
 import { useMeta } from '@neovici/cosmoz-utils/hooks/use-meta';
-import * as echarts from 'echarts/core';
+import { component, html, useEffect } from '@pionjs/pion';
+import { LineChart, PieChart } from 'echarts/charts';
 import {
 	GridComponent,
 	LegendComponent,
 	TitleComponent,
 	TooltipComponent,
 } from 'echarts/components';
-import { LineChart, PieChart } from 'echarts/charts';
+import * as echarts from 'echarts/core';
 import { LabelLayout, UniversalTransition } from 'echarts/features';
 import { CanvasRenderer } from 'echarts/renderers';
 
@@ -30,13 +30,19 @@ const useChart = (host) => {
 		useEffect(() => {
 			const chart = echarts.init(host, theme, initOpts),
 				onClick = (detail) =>
-					host.dispatchEvent(new CustomEvent('data-click', { detail }));
+					host.dispatchEvent(new CustomEvent('data-click', { detail })),
+				onFinished = () => {
+					host.toggleAttribute('chart-rendered', true);
+					host.dispatchEvent(new CustomEvent('chart-finished'));
+				};
 
 			chart.on('click', onClick);
+			chart.on('finished', onFinished);
 			meta.chart = chart;
 
 			return () => {
 				chart.off('click', onClick);
+				chart.off('finished', onFinished);
 				chart.dispose();
 			};
 		}, [theme, initOpts]);
@@ -51,6 +57,7 @@ const useChart = (host) => {
 			) {
 				meta.chart.clear();
 			}
+			host.removeAttribute('chart-rendered');
 			meta.chart.setOption(option);
 			meta.lastOption = option;
 		}, [option, theme, initOpts]);
@@ -85,6 +92,8 @@ const useChart = (host) => {
 	 *
 	 * All echarts configuration options can be set using the `option` property.
 	 * The echarts `click` event is exposed as `data-click`.
+	 * A `chart-finished` event is dispatched and a `chart-rendered` attribute
+	 * is set when all chart animations complete.
 	 *
 	 *
 	 * @customElement
