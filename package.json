@@ -56,7 +56,7 @@
 		"echarts": "^6.0.0"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "^20.1.0",
+		"@commitlint/cli": "^21.0.1",
 		"@commitlint/config-conventional": "^20.0.0",
 		"@neovici/cfg": "^2.8.0",
 		"@open-wc/testing": "^4.0.0",
