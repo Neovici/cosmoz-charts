@@ -1,81 +1,69 @@
 {
-	"name": "@neovici/cosmoz-charts",
-	"version": "5.6.0",
-	"description": "Create beautiful charts using billboard.js",
-	"keywords": [
-		"charts",
-		"web-components"
-	],
-	"homepage": "https://github.com/Neovici/cosmoz-charts#readme",
-	"bugs": {
-		"url": "https://github.com/Neovici/cosmoz-charts/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/Neovici/cosmoz-charts.git"
-	},
-	"license": "Apache-2.0",
-	"author": "Cristian Necula <virusz@gmail.com>",
-	"main": "cosmoz-chart.js",
-	"directories": {
-		"test": "test"
-	},
-	"files": [
-		"cosmoz-*.js"
-	],
-	"scripts": {
-		"lint": "eslint --cache .",
-		"check:duplicates": "check-duplicate-components",
-		"lint-tsc": "tsc",
-		"start": "npm run storybook:start",
-		"test": "wtr --coverage",
-		"test:watch": "wtr --watch",
-		"storybook:start": "storybook dev -p 8000",
-		"storybook:build": "storybook build",
-		"storybook:deploy": "storybook-to-ghpages",
-		"storybook:preview": "npm run storybook:build && http-server ./storybook-static/ --silent",
-		"prepare": "husky install"
-	},
-	"release": {
-		"plugins": [
-			"@semantic-release/commit-analyzer",
-			"@semantic-release/release-notes-generator",
-			"@semantic-release/changelog",
-			"@semantic-release/github",
-			"@semantic-release/npm",
-			"@semantic-release/git"
-		],
-		"branch": "master"
-	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"dependencies": {
-		"@neovici/cosmoz-utils": "^6.12.0",
-		"@pionjs/pion": "^2.5.2",
-		"echarts": "^6.0.0"
-	},
-	"devDependencies": {
-		"@commitlint/cli": "^21.0.1",
-		"@commitlint/config-conventional": "^21.0.1",
-		"@neovici/cfg": "^2.8.0",
-		"@open-wc/testing": "^4.0.0",
-		"@rollup/plugin-replace": "^6.0.2",
-		"@semantic-release/changelog": "^6.0.3",
-		"@semantic-release/git": "^10.0.1",
-		"@storybook/web-components-vite": "^10.1.8",
-		"@types/mocha": "^10.0.6",
-		"@types/node": "^25.0.3",
-		"@web/test-runner-selenium": "^0.7.0",
-		"esbuild": "^0.28.0",
-		"eslint": "^9.0.0",
-		"http-server": "^14.1.1",
-		"husky": "^9.0.11",
-		"lint-staged": "^17.0.4",
-		"rollup-plugin-esbuild": "^6.1.1",
-		"semantic-release": "^25.0.1",
-		"sinon": "^22.0.0",
-		"storybook": "^10.1.8",
-		"typescript": "^6.0.3"
-	}
+  "name": "@neovici/cosmoz-charts",
+  "version": "5.6.0",
+  "description": "Create beautiful charts using billboard.js",
+  "keywords": [
+    "charts",
+    "web-components"
+  ],
+  "homepage": "https://github.com/Neovici/cosmoz-charts#readme",
+  "bugs": {
+    "url": "https://github.com/Neovici/cosmoz-charts/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Neovici/cosmoz-charts.git"
+  },
+  "license": "Apache-2.0",
+  "author": "Cristian Necula <virusz@gmail.com>",
+  "main": "cosmoz-chart.js",
+  "directories": {
+    "test": "test"
+  },
+  "files": [
+    "cosmoz-*.js"
+  ],
+  "scripts": {
+    "lint": "eslint --cache .",
+    "check:duplicates": "check-duplicate-components",
+    "lint-tsc": "tsc",
+    "start": "npm run storybook:start",
+    "test": "wtr --coverage",
+    "test:watch": "wtr --watch",
+    "storybook:start": "storybook dev -p 8000",
+    "storybook:build": "storybook build",
+    "storybook:deploy": "storybook-to-ghpages",
+    "storybook:preview": "npm run storybook:build && http-server ./storybook-static/ --silent",
+    "prepare": "husky install",
+    "changeset": "changeset"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@neovici/cosmoz-utils": "^6.12.0",
+    "@pionjs/pion": "^2.5.2",
+    "echarts": "^6.0.0"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.28.1",
+    "@commitlint/cli": "^21.0.1",
+    "@commitlint/config-conventional": "^21.0.1",
+    "@neovici/cfg": "^2.8.0",
+    "@open-wc/testing": "^4.0.0",
+    "@rollup/plugin-replace": "^6.0.2",
+    "@storybook/web-components-vite": "^10.1.8",
+    "@types/mocha": "^10.0.6",
+    "@types/node": "^25.0.3",
+    "@web/test-runner-selenium": "^0.7.0",
+    "esbuild": "^0.28.0",
+    "eslint": "^9.0.0",
+    "http-server": "^14.1.1",
+    "husky": "^9.0.11",
+    "lint-staged": "^17.0.4",
+    "rollup-plugin-esbuild": "^6.1.1",
+    "sinon": "^22.0.0",
+    "storybook": "^10.1.8",
+    "typescript": "^6.0.3"
+  }
 }
