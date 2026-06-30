@@ -5,3 +5,8 @@
 .eslintcache
 yarn-error.log
 .envrc
+
+# Codecov uploader artifacts
+codecov
+codecov.SHA256SUM
+codecov.SHA256SUM.sig
