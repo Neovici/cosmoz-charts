@@ -1,4 +1,4 @@
-/* eslint-disable no-alert, camelcase */
+/* eslint-disable no-alert */
 import { html } from '@pionjs/pion';
 import '../cosmoz-chart';
 
@@ -67,4 +67,44 @@ export const donut = () => {
 		.option=${option}
 		@data-click=${() => alert('data-click')}
 	></cosmoz-chart>`;
+};
+
+export const gauge = () => {
+	const option = {
+		series: [
+			{
+				type: 'gauge',
+				startAngle: 180,
+				endAngle: 0,
+				center: ['50%', '75%'],
+				radius: '90%',
+				min: 0,
+				max: 100,
+				axisTick: { show: false },
+				splitLine: { show: false },
+				axisLabel: { show: false },
+				title: { offsetCenter: [0, '-10%'], fontSize: 20 },
+				detail: { fontSize: 30, offsetCenter: [0, '-35%'] },
+				data: [{ value: 70, name: 'Score' }],
+				pointer: {
+					icon: 'path://M12.8,0.7l12,40.1H0.7L12.8,0.7z',
+					length: '12%',
+					width: 20,
+					offsetCenter: [0, '-75%'],
+					itemStyle: { color: 'black' },
+				},
+				axisLine: {
+					lineStyle: {
+						width: 40,
+						color: [
+							[0.33, '#FF6E76'],
+							[0.66, '#FDDD60'],
+							[1, '#7CFFB2'],
+						],
+					},
+				},
+			},
+		],
+	};
+	return html`<cosmoz-chart .option=${option}></cosmoz-chart>`;
 };

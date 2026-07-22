@@ -1,6 +1,6 @@
 import { useMeta } from '@neovici/cosmoz-utils/hooks/use-meta';
 import { component, html, useEffect } from '@pionjs/pion';
-import { LineChart, PieChart } from 'echarts/charts';
+import { GaugeChart, LineChart, PieChart } from 'echarts/charts';
 import {
 	GridComponent,
 	LegendComponent,
@@ -18,6 +18,7 @@ echarts.use([
 	LegendComponent,
 	LineChart,
 	PieChart,
+	GaugeChart,
 	CanvasRenderer,
 	LabelLayout,
 	UniversalTransition,
