@@ -1,5 +1,11 @@
 # [5.6.0](https://github.com/Neovici/cosmoz-charts/compare/v5.5.0...v5.6.0) (2026-02-09)
 
+## 5.8.0
+
+### Minor Changes
+
+- f70388f: add support for gauge chart
+
 ## 5.7.0
 
 ### Minor Changes
