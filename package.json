@@ -64,6 +64,6 @@
     "rollup-plugin-esbuild": "^6.1.1",
     "sinon": "^22.0.0",
     "storybook": "^10.1.8",
-    "typescript": "^6.0.3"
+    "typescript": "^7.0.2"
   }
 }
