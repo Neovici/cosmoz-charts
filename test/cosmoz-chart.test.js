@@ -1,5 +1,5 @@
 import { assert, fixture, html, nextFrame, oneEvent } from '@open-wc/testing';
-import '../cosmoz-chart.js';
+import { echarts } from '../cosmoz-chart.js';
 
 const lineOption = {
 	xAxis: {
@@ -24,6 +24,45 @@ suite('cosmoz-chart', () => {
 		);
 
 		assert.ok(chart.querySelector('canvas'));
+	});
+
+	test('replaces cartesian options when switching to a pie chart with notMerge', async () => {
+		const chart = await fixture(
+			html`<cosmoz-chart
+				.option=${{ ...lineOption, animation: false }}
+				.updateOpts=${{ notMerge: true }}
+			></cosmoz-chart>`,
+		);
+		chart.option = {
+			animation: false,
+			series: [
+				{
+					type: 'pie',
+					data: [
+						{ name: 'A', value: 2 },
+						{ name: 'B', value: 3 },
+					],
+				},
+			],
+		};
+		await nextFrame();
+		const option = echarts.getInstanceByDom(chart).getOption();
+		assert.isEmpty(option.xAxis ?? []);
+		assert.isEmpty(option.yAxis ?? []);
+		assert.equal(option.series[0].type, 'pie');
+	});
+
+	test('preserves the default merging behavior for partial updates', async () => {
+		const chart = await fixture(
+			html`<cosmoz-chart
+				.option=${{ ...lineOption, animation: false }}
+			></cosmoz-chart>`,
+		);
+		chart.option = { series: [{ data: [1, 2, 3, 4, 5, 6, 7] }] };
+		await nextFrame();
+		const option = echarts.getInstanceByDom(chart).getOption();
+		assert.equal(option.xAxis[0].type, 'category');
+		assert.deepEqual(option.series[0].data, [1, 2, 3, 4, 5, 6, 7]);
 	});
 
 	test('sets chart-rendered attribute when rendering completes', async () => {

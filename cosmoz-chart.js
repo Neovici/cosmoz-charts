@@ -25,7 +25,7 @@ echarts.use([
 ]);
 
 const useChart = (host) => {
-		const { option, theme, initOpts } = host,
+		const { option, theme, initOpts, updateOpts } = host,
 			meta = useMeta({ chart: undefined, lastOption: undefined });
 
 		useEffect(() => {
@@ -59,9 +59,9 @@ const useChart = (host) => {
 				meta.chart.clear();
 			}
 			host.removeAttribute('chart-rendered');
-			meta.chart.setOption(option);
+			meta.chart.setOption(option, updateOpts);
 			meta.lastOption = option;
-		}, [option, theme, initOpts]);
+		}, [option, theme, initOpts, updateOpts]);
 
 		useEffect(() => {
 			const observer = new ResizeObserver((entries) =>
@@ -92,6 +92,7 @@ const useChart = (host) => {
 	 * Create beautiful charts using [echarts](https://echarts.apache.org).
 	 *
 	 * All echarts configuration options can be set using the `option` property.
+	 * Pass echarts setOption options (e.g. { notMerge: true }) via `updateOpts`.
 	 * The echarts `click` event is exposed as `data-click`.
 	 * A `chart-finished` event is dispatched and a `chart-rendered` attribute
 	 * is set when all chart animations complete.
