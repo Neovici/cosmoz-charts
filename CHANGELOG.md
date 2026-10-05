@@ -1,5 +1,11 @@
 # [5.6.0](https://github.com/Neovici/cosmoz-charts/compare/v5.5.0...v5.6.0) (2026-02-09)
 
+## 5.9.0
+
+### Minor Changes
+
+- 1af8f2a: Expose ECharts setOption update options through updateOpts, allowing full replacement when switching between cartesian and pie charts while preserving merging by default.
+
 ## 5.8.0
 
 ### Minor Changes
